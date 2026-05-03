@@ -1,0 +1,30 @@
+# Local intermediate cache (rebuild with `python scripts/fetch.py`)
+raw-html/
+
+# Local Claude Code settings
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temp / backup
+*.tmp
+*.bak
+*.log

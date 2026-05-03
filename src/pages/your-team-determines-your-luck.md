@@ -1,0 +1,65 @@
+# Your Team Determines Your Luck — VGC guide
+
+Source: https://www.vgcguide.com/your-team-determines-your-luck
+
+---
+
+## Your Team Determines Your Luck
+
+7min 56sec read
+
+Never lucky? The choices you make when teambuilding affect your luck in battle.
+
+Written by Wolfe Glick
+
+Teambuilding / Abstract Building Blocks
+
+How “lucky” or “unlucky” you are in Pokémon is determined by a lot more than your karma or random variance. There’s a lot that goes into whether a player is “lucky” or not, much of which is within a player's control. While this concept might be easy to understand in theory, it is difficult to internalize, even for the most advanced players. This article will cover the teambuilding part of improving your luck.
+
+### Take Control of the Odds
+
+There’s a lot of potential variance in Pokémon - critical hits, secondary effects, damage rolls, and accuracy are just some of the ways that make predicting the outcome of a turn difficult. However, there are certain things you can do as a teambuilder to nudge the game to favor you more or to punish you less. For example, you can select more accurate moves instead of less accurate moves.
+
+#### EXAMPLE
+
+Many Pokemon rely on high power moves that have accuracy lower than 100%. One option players have to avoid losing games due to missing a move is to run both the stronger, less accurate move and the weaker, more accurate move on the same Pokemon. Mega Charizard-Y would normally run a combination of Protect/Flamethrower/Solarbeam/Overheat(or Heat Wave/Fire Blast) in the 2015 and 2018 formats, for example. This is also seen occasionally on Pokemon with choice items and Pokemon with the Assault Vest, such as Draco Meteor and Dragon Pulse on Choice Scarf Salamence in 2014.
+
+To be more direct, a player who prioritizes accurate moves in the teambuilding process is far less likely to lose games due to missing a move than a player who does not. This isn’t to say accuracy is the end-all, be-all of teambuilding - sometimes you need to run an inaccurate move to bring out the maximum value in a Pokemon. That being said, whenever you choose to use a move that is not a guaranteed hit you should be thinking about whether you are likely to have alternatives (such as Dragon Pulse and Draco Meteor on the same Pokemon) as well as the scenarios where you will be forced to rely on the move.
+
+### Act First
+
+Moving consistently after your opponent (having a team with poor Speed control) is implicitly risky. By moving after your opponent you’re risking critical hits and secondary effects (Scald burns, Thunderbolt paralysis, Muddy Water accuracy drops, etc) that might be prevented by attacking first. One of the best ways to ensure you avoid negative RNG is to knock out your opponent’s Pokemon before it can attack - after all, a fainted Pokemon can’t crit or flinch you. To set up opportunities for your Pokemon to move first, focus on speed control with fast Pokemon, the item Choice Scarf, or moves such as Tailwind, Icy Wind, and Trick Room.
+
+#### EXAMPLE
+
+One of the most classically terrifying Pokemon to face in VGC is a Landorus-Therian holding the item Choice Scarf and knowing the move Rock Slide. Although Choice Scarf Landorus-Therian had a variety of other uses in VGC 2015 and VGC 2018, no matter how close its trainer was to a loss, this Pokemon could nearly always wedge a small leg in the door of defeat by moving first and threatening flinches with small percentage chances. Choice Scarf Landorus-Therian shows the power of the odds granted to a player when their Pokemon move first, and the respect that Speed commands.
+
+With the release of Brilliant Diamond and Shining Pearl, a grassroots metagame sprang up featuring only Pokemon released in gen 4 and before. In this match in top 16 of the tournament, you can see me make a 2-4 comeback thanks to some extremely fortunate RNG as my Garchomp and Tyranitar outsped all of my opponents Pokemon.
+
+### Pay Attention to Team Composition
+
+Certain playstyles can also be more susceptible to poor luck. If a team is very fast and frail, a single bit of bad luck can cause a domino effect that can cost the whole game. However, a team that is too defensive can lose too much offensive presence by a surprise knockout or status effect. Additionally, a team that is stretched too thin and relies too heavily on any one Pokémon for a specific matchup is susceptible to losing games due to a single bit of bad luck.
+
+#### EXAMPLE
+
+Tapu Fini’s Misty Surge effect is sought-after among players looking to reduce their odds of random Burns, Paralysis, Freeze, or Sleep effects harming their Pokemon. Tapu Fini controls the odds in your favor: if you can’t get Frozen, there’s no way an end-of-game Ice Beam can ruin an otherwise ideal endgame.
+
+However, certain Tapu Fini movesets can leave you at the mercy of luck, too. Tapu Fini doesn’t have a very high Special Attack stat, but it does have high defensive stats, and its offensive and defensive typing is very nice. Many players will choose to take advantage of these attributes by running sets focused on Calm Mind. The issue with Special Defense boosts is that they can leave you with a feeling of security-- but while you’re setting up your often taking attacks, and the longer you take to KO your opponents the more chances they have to land a critical hit that can spell defeat. Tapu Fini can be strong after just one Calm Mind, but in some situations, it’ll stick around on the field long enough to be immensely threatening to your opponent-- even after all of your other Pokemon have fainted. In an endgame situation where it’s facing down 2, 3, or even 4 opponents all by itself, the battle can become a race for your opponents to crit through your defenses.
+
+Does this mean that you shouldn’t run Calm Mind on Tapu Fini? That’s absolutely not what we’re saying. Many players have accepted the long-run odds and found success with Calm Mind Tapu Fini. Ultimately, it’s up to you-- the most important thing is to keep inherently accepted risk in mind when building your team.
+
+Please enjoy this replay illustrating this concept (don’t ask about my team please I don’t know either)
+
+See it in showdown here.
+
+### Wrapping up
+
+Accuracy, Speed, and Playstyle are just three examples of many that influence whether luck will favor you on any given day. It is a mistake to think that just because we are all playing the same game we therefore should all have more or less the same luck. Certain players really are luckier or unluckier than others - not because they were born with something, but because of the decisions they made. The good news is if you consider yourself to be “unlucky” when it comes to Pokémon, it’s likely because you are making decisions that make you vulnerable to luck. As a student of the game you should be constantly assessing which of your decisions gives you the opportunity for good “luck” and which makes you vulnerable to bad “luck”. By paying attention and learning to identify decisions that improve your odds, you can change your luck for the better.
+
+Teambuilding Home
+
+Teambuilding Home
+
+Next In Abstract Building Blocks: Accuracy vs Power
+
+Next In Abstract Building Blocks: Accuracy vs Power

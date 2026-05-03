@@ -1,0 +1,63 @@
+# &quot;Island&quot; Pokemon — VGC guide
+
+Source: https://www.vgcguide.com/island-pokemon
+
+---
+
+## "Island" Pokémon
+
+5min 7sec read
+
+Make sure your team doesn't have Pokémon that get stuck doing nothing.
+
+Written by Wolfe Glick
+
+Teambuilding / Pitfalls
+
+If I asked you what the key difference is between Single Battles and Double Battles, you would probably answer that the primary difference is the number of Pokémon on the field at any given time. What’s less obvious is the various ways in which the difference in the number of Pokémon changes the ways in which battles progress. In this article, we’ll make a case on why you want to think twice before adding purely “defensive” Pokémon to your team.
+
+### What are “Island” Pokémon?
+
+One of the key elements of Double battles is how Pokémon interact together dynamically. Your two Pokémon on the field will work together in harmony-- they’ll attack different Pokémon, use supportive moves, or defend each other. Because the interaction between your two Pokémon is important, Pokémon that are typically successful in VGC have an immediate or near-immediate impact on the state of the game. This is sometimes called board presence. Impact on the state of the game can take the form of offensive pressure (threatening damage with your Pokémon’s attacks) or supportive pressure (protecting another Pokémon or setting up to threaten offense in the near-immediate future).
+
+Most Pokémon need some offensive pressure because without it, there’s nothing stopping your opponent from ignoring that Pokémon while they destroy the rest of your team. We coined the term “Island Pokémon” because the Pokémon is isolated and often just watches as the foe ignores it, KOes all its partners, and deals with it in the end by abusing constant 2v1s after all the teammates have fainted.
+
+In Single Battles, these traits may not be as much of an issue. Let's look at a Pokémon like Toxapex. Toxapex is an incredibly bulky Pokémon with good defensive typing that primarily does damage using Toxic, gradually wearing down the opponent over time using recovery options coupled with its gigantic natural bulk to outlast most foes. In Single Battles, this strategy is typically highly effective and challenging to counter. So why does this more defensive approach not work in doubles?
+
+Well, the key word for Toxapex is gradual. In order for Toxapex to do damage, it needs time for Toxic to stack up. Even if we assume that Toxapex has a favorable matchup and still has the bulk to answer most threats, this strategy still wouldn’t work because Toxapex has to have a second Pokémon next to it on your side of the field. If you try to use Toxapex to stall out your opponent’s health as Toxic gradually whittles away at them, there’s nothing stopping your opponent from continually attacking Toxapex’s partner Pokémon.
+
+Now, obviously using both your Pokémon to attack one of your opponents’ is a pretty rudimentary strategy when it comes to Double Battles, but there’s more going on here. Toxapex offers no immediate offensive pressure - it doesn’t threaten nearly any Pokémon in the short term. In Single Battles this is fine because Toxapex is able to sponge damage and heal, but in Double Battles it won’t cut it. It cannot heal or defend its partner.
+
+In fact, many popular defensive strategies from Single Battles don’t translate well to Double Battles for this reason– the defensive needs of Pokémon are different in Doubles. For this reason, we don’t recommend attempting “stall” strategies or including “walls” on your team.
+
+You can see an example of this here.
+
+### Are all Defensive Pokemon Island Pokemon?
+
+Some defensive Pokémon still exert pressure– many defensive Pokémon have seen success in VGC. The real question to ask yourself when determining whether or not a Pokémon might be an Island Pokémon is: can my opponent safely ignore this Pokémon without consequence? This explains why extremely defensive Pokémon like Amoonguss and Smeargle are not Island Pokémon, as ignoring them results in either status or attack redirection (supportive pressure). Even Pokémon like Dusclops which typically use only Night Shade and Pain Split to do damage are not Island Pokémon, as the chip damage makes Dusclops difficult to ignore.
+
+“In my experience, the Pokémon most likely to be Island Pokémon are Pokémon that rely on slow chip turn based damage AND cannot exert offensive pressure. Some examples from Single Battles include Toxapex and Shuckle. Although Pokémon like Ferrothorn and Celesteela have performed well before, they sometimes end up in situations where they can be safely ignored. ”
+
+— Wolfe
+
+#### EXAMPLE
+
+Some defensive Pokemon can exert pressure by setting up. One example of this is a team that attempts to set up a very annoying Chansey by using Guard Split to raise Chansey’s defenses coupled with setup moves like Minimize and Defense Curl. These teams intend to win by sacrificing their supporting pieces and then winning a 1 against 4 with the Pokemon that was set up. One example of this is the first game of this set between DaWoblefet and Raider, where DaWoblefet uses Chansey to win a 1 vs 4.
+
+#### EXAMPLE
+
+Another example is the Iron Defense/Leech Seed/Body Press/Protect Ferrothorn that popped up during Sword and Shield. Teams that lacked the coverage to damage it could quickly be overwhelmed due to Body Press’ unique property of using the Defense Stat when doing damage, allowing Ferrothorn to boost both its Defensive and Offensive capabilities. Typically strategies that set up Pokemon like Chansey or Ferrothorn are extremely susceptible to losing a game off a singular critical hit, but that’s a separate issue.
+
+In this match between Aaron Zheng and Markus Stadter, Markus uses his Iron Defense Body Press Ferrothorn in tandem with Max Steelspike Excadrill to quickly boost Ferrothorns defenses, allowing Ferrothorns Body Press to do significant damage quickly and making it difficult to remove.
+
+### Wrapping Up
+
+In summary, when deciding whether or not to put a Pokémon on your team, ask yourself: what is this Pokémon doing? And, do I think it will be safe in most cases for my opponent to ignore? If the answer is yes, consider using a different Pokémon. Not every Pokémon needs to be putting out tons of damage in order to be contributing to the battle, but every Pokémon does need to be an active participant.
+
+Teambuilding Home
+
+Teambuilding Home
+
+Next In Pitfalls: When do you Move on from a Team
+
+Next In Pitfalls: When do you Move on from a Team

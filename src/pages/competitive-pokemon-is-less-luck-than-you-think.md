@@ -1,0 +1,99 @@
+# Competitive Pokémon is less luck than you think — VGC guide
+
+Source: https://www.vgcguide.com/competitive-pokemon-is-less-luck-than-you-think
+
+---
+
+## Competitive Pokémon is less luck than you think
+
+7min 2sec read
+
+While luck/RNG is a component to competitive Pokémon, it’s less impactful than newer players may think.
+
+Written by Aaron Zheng
+
+Battling / Introduction
+
+People often dismiss competitive Pokémon because of the luck that is associated with it - critical hits, misses, flinches, freezes, etc. While luck, or “RNG” (random number generator, which people often use synonymously), is undoubtedly a component of competitive Pokémon, it actually plays a less significant role than people think. The reality is that the best players in the world are able to consistently maneuver themselves in a way to “maximize” their own luck, both during the team-building process and the battling process. They also understand when they may need to rely on some luck to win.
+
+Competitive Pokémon, in many ways, is like poker. While there’s a fair amount of variance, the best players are able to win consistently over a long period of time. This is especially important if you are interested in climbing the ladder or competing in a tournament - in these scenarios, you’ll be playing a lot of Pokémon.
+
+I’m writing this article because I think it’s important for players to acknowledge the role that luck plays in competitive Pokémon. It’s certainly a part of the game, but you can reduce how luck manifests itself. One common pitfall I see players fall into when starting out is using bad luck as an excuse for their losses. I did this a lot when I first started as a player, and it definitely held me back. Rather than look at my games from an objective point of view, I’d get emotional and simply focus on the fact that I would have won if I didn’t get unlucky. While this may be the case, it prevented me from finding other opportunities where I could have improved my play. Getting out of this mindset was a major step in my development as a player.
+
+So, with all of that said now, let’s highlight some ways luck can appear in competitive Pokémon and how you can optimize for it!
+
+Accuracy: Missing an attack can have severe consequences in Pokémon as it essentially wastes a turn. You need to think about accuracy, both during the team-building process and while you’re actually battling.
+
+- Team Building: When you opt to put a lower accuracy attack on a Pokémon, you have to consider that you WILL miss that attack at points. Every time you use any move that’s not 100% accurate, you have to ask yourself what the consequences of missing that move are. Can you afford missing the attack, or will missing it generally lead directly to losses? If missing does lead to losses, is it worth using?
+
+#### EXAMPLE
+
+In 2014, I used Mega Lucario at the 2014 US National Championships as a counter to Mega Charizard-Y, which I expected to be popular at the event. I knew I could get a one-hit KO onto Charizard with Stone Edge, a move that is 80% accurate. In the tournament, I faced four Charizards and only hit one Stone Edge. While frustrating at the time, in reflection, I realized why this was a sub-optimal strategy: the risk vs. reward was huge, and missing a Stone Edge effectively led to an immediate loss since Charizard could just knock out my Lucario in return. Relying on an 80% chance to immediately win/lose a match isn’t a consistent strategy, especially when you’re playing in a 9 round tournament.
+
+- Battling: When you’re in a battle, you always need to consider the consequences of missing an attack, especially in end-game scenarios. You generally want to go for lower accuracy attacks when 1) they can gain you a major advantage 2) you don’t have a significantly better option 3) missing won’t lead to major consequences.
+
+*Note: One reason why it’s so important to learn damage calcs in competitive Pokémon is so you know when you can rely on 100% accurate attacks to finish off games, rather than inaccurate moves!
+
+Critical Hits: While rare, critical hits have the ability to drastically swing a battle. There are multiple ways in which your team-selection & play can lead to fewer/more critical hits:
+
+- Attacking First: When you move before your opponent, you give yourself the opportunity to get potential luck/RNG before they get a chance to attack. Thus, if you’re using a team that generally moves after your opponent, you’ll often be more vulnerable to critical hits and other secondary effects. This is one reason why speed control is so crucial in competitive VGC.
+
+- Defensive Pokémon/Teams: Using defensive Pokémon that rely heavily on setup, such as Calm Mind Tapu Fini or Iron Defense Ferrothorn, can lead to more critical hits as games will generally last longer given the lack of damage output.
+
+Status Conditions: Sleep, paralysis, and freeze all add another layer of variance in competitive Pokémon, so it’s important that you have ways to properly deal with them.
+
+- Teambuilding: Top teams will often have multiple ways to shut down Pokémon that like to inflict status conditions. Some examples include using certain items (e.g. Safety Goggles, Lum Berry), certain moves (e.g. Taunt), or Pokémon that are immune to certain moves (e.g. Grass-type Pokémon for Spore/Sleep Powder). Sleep, in particular, is common regardless of the year, so having answers to the common sleep inducing Pokémon is essential.
+
+#### EXAMPLE
+
+In 2016, Dark Void Smeargle was incredibly common. To counter this, some players used Crafty Shield Smeargle to completely nullify Dark Void.
+
+#### EXAMPLE
+
+Lum Berry is a common item on Charizard in Series 12 VGC. It prevents Charizard from getting paralyzed by Thunder Wave and allows it to demolish sets like Focus Sash Venusaur and Amoonguss.
+
+- Battling: When playing Pokémon that can inflict status conditions (e.g. Grimmsnarl, Thundurus, Amoonguss, Venusaur), you can reduce variance by eliminating these Pokémon quickly, preventing them from getting multiple conditions off. Conversely, ignoring these Pokémon can allow them to disrupt your entire team, making you have to deal with more luck/RNG each turn.
+
+#### EXAMPLE
+
+In 2013, I lost in the semi-finals of the World Championships. In that set, Thundurus was a major problem as it was able to spread paralysis via Thunder Wave and confusion via Swagger. Because I failed to eliminate Thundurus early on, I allowed it to induce much more variance than I should have.
+
+These are just a couple of ways that you can see luck appear in competitive Pokémon, but as you can see, you can actually control each way to a certain degree.
+
+Before we finish, I want to briefly talk about the idea of tilt, which is a concept that originated from poker. "Going on tilt" is when a player becomes enraged about something and starts making ill-advised plays based purely on emotion. I see players go on tilt in Pokémon all the time, either midway through a match or throughout the course of a tournament.
+
+Being able to not tilt is an essential skill in competitive Pokémon - you will undoubtedly get unlucky at some point throughout the course of a tournament or laddering session. Pokémon is a highly mental game, and you want to do everything in your power to stay on top of your game. Here are some ways that I’ve personally dealt with bad luck in Pokémon:
+
+- While Laddering / Practicing
+
+- Try out a brand new team & shake things up a bit
+
+- Take a break and step away from the game for a while
+
+- Reaffirm good plays that you’ve made - e.g. “I’m proud of how I played that game. Even though I lost to a 10% miss, I put myself in a great position to win” rather than “I can’t believe I lost to such a small percentage”
+
+- At Tournaments
+
+- During a Game
+
+- Stop focusing on what could have happened, start thinking about how I have to adjust my gameplan and what my new path to victory is
+
+- After a Game
+
+- Find a place in the venue where I can be alone & collect my thoughts
+
+- Listen to music that calms me down / puts me in a good mood
+
+- Drink some water, take a deep breathe, and close my eyes briefly
+
+### Conclusion
+
+At the end of the day, Pokémon is a game that inherently has luck/RNG. You’ll undoubtedly face some bad luck in your competitive Pokémon career -- that’s part of the journey. I hope that by reading this article though, you can see that there’s a lot more depth to competitive Pokémon than meets the eye, and it’s a lot less about luck than people generally think.
+
+Battling Home
+
+Battling Home
+
+Next In Introduction: Building up a Knowledge Base
+
+Next In Introduction: Building up a Knowledge Base

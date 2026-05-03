@@ -1,0 +1,107 @@
+# What Makes a Pokemon &quot;good&quot;? — VGC guide
+
+Source: https://www.vgcguide.com/what-makes-a-pokemon-good
+
+---
+
+## What Makes a Pokémon "Good"?
+
+7min 56sec read
+
+Learn how to evaluate the strength of individual Pokémon.
+
+Written by Aaron Traylor
+
+Teambuilding / Abstract building Blocks
+
+Wolfe released this video, where he talks about one of the first things we think about in teambuilding: the Use Good Pokémon rule, or more concretely, the Pokémon on your team should be good under your teambuilding philosophy. This isn’t to say, though, that you should only use the highest used Pokémon with the best stats-- in this article, we’ll help you think about what this rule means in your own terms.
+
+### What Makes a Pokémon "Good"?
+
+Being able to identify a "good Pokémon" is a more important and foundational skill, in my opinion, than being able to make a "good team". What does it mean for a Pokémon to be "good"? It does NOT mean that the Pokémon has a high usage rate. Good Pokémon often have high usage rates, but many good Pokémon do not.
+
+Maybe cheekily, the definition of a "good" Pokémon is a definition that you have to come to yourself. What do you value in a Pokémon battle? What do you think are the best ways to win? These are principles that YOU hold dear based on your experience as someone learning to play this game. This is, of course, extremely subjective-- all of Pokémon is. I have things in my head about what I think makes a Pokémon "good", but that's different from what you might be thinking of. The path to victory in a Pokémon battle is so complex that all we're able to do is come up with our own principles and philosophies on battling and teambuilding and refine them endlessly.
+
+If you're new to this game, it's okay to not have principles. It's okay to have principles that you think might be wrong or based on little experience. You'll pick things up as you go along. What's important for you is that you identify things that make you feel like you're having fun and learning. Pokemon is a game about endless learning, so you might as well start now.
+
+When you pick Pokémon for your teams-- are you picking Pokémon that meet your criteria or help further your goals? Or are you adding band-aid fixes to support what you think are holes? If you have to include a Pokémon that doesn't meet your criteria-- if you don’t think it’s good, but you’re putting it on your team anyway-- you need to take a step back and think about your team from a different angle.
+
+If your team isn't working out, revisit your principles of why each Pokémon is on your team. At one point, you thought that each of these Pokémon was good, and was a good fit for your team. Why did you think that? Is that decision working out how you wanted it to?
+
+### Considering Other People’s Opinions
+
+Much as how you have some idea of what Pokémon are good, other players are going to have their own perspective. Taking in the opinions of other players (whether through conversation or watching videos) is a great way to learn and to refine your own philosophy.
+
+Beware of being told that a Pokémon is "good" and not being told why. If you’re hearing it from a better player, they might assume you know the context behind why they would think that a Pokémon is good. You might not! It's okay to not know what makes a Pokémon good under their definition. They defined that for themselves and then didn't tell you directly. Ask them to put it in their own words why a Pokémon is good, or hypothesize and put it into words yourself.
+
+At worst, that person "slapped" the Pokémon onto their team without considering why-- they just thought it was "good" in general. In this guide, we caution you to fully think through why every Pokémon makes it onto your team. You define what makes a Pokémon good under your own principles: take the time to understand why you want to put it on your team, and whether reality will play out as you envision it. Your team will be better for it.
+
+Different people might have different opinions on what makes a good Pokémon based on their own principles and experiences. I want to urge you to think through what a "good" Pokémon is for yourself and to not rely on other players to decide that for you. Remember that you’re in charge of your own Pokémon.
+
+#### EXAMPLE
+
+Written by Aaron Traylor
+
+I, personally, think Salazzle is not a great Pokemon. Not even within the current VGC metagame or format, I think in general its stats are such that it will never be useful to me to play the game of Pokemon that I want. It has low defenses and its offenses and utility aren't special to the point where I want it on my team.
+
+You could take that at face value. Or you could look at a player like Jamie Boyt, who went 7-0 on the second day of the World Championships with Salazzle. Clearly, Jamie values what tools Salazzle has in battle. Clearly, it worked out for him and clearly my principles of what Pokemon are good aren't the full picture of our game. Was I wrong about my assessment of Salazzle? I think yes and no-- Salazzle might not lend itself to the way of playing Pokemon that I’m comfortable with, but Jamie was able to use it effectively. Does the clash of Jamie’s result and my opinion support or challenge your own philosophy?
+
+### What are our criteria?
+
+Maybe it would be helpful to hear from us what we consider markers of good Pokémon, but please take our opinions as just that-- opinions.
+
+#### Aaron T.
+
+Good Pokémon fundamentally challenge your opponent. The best Pokémon are the ones that do so much, the other Pokémon allowed in the format simply don’t have enough tools to deal with them. This is heavily linked to the concept of consistency of strategy: a Pokémon should be strong enough or have enough tools to give your opponent problems, even if your opponent is prepared for them.
+
+I think the best Pokémon of all time is Xerneas in the VGC 2016/2019 metagames. Xerneas commanded so much power and was so flexible in how it could set up that players were forced to run multiple checks and counters to begin to deal with it, and even then, it still ran away with games thanks to a flexible supporting cast. That isn’t to say that strength is the only aspect that makes a Pokémon good. Pokémon that accomplish many goals, such as Incineroar, can sometimes similarly rise above the capabilities of your opponent.
+
+Being “good”, like everything in Pokémon, is always in context. For example, Amoonguss’ useful defensive typing, stats, and moves are a variety of reasons why I would consider it for my teams. Is Amoonguss good in the context of whatever format it’s being played in? Well, then I’d have to consider-- how popular are anti-Sleep options such as Taunt, Safety Goggles, or Misty Terrain? How useful is its defensive typing going to be if Fire- or Flying-type Pokémon are everywhere? Furthermore, do all of those factors occur naturally because those Pokémon are good too-- or are they in response to Amoonguss itself? In the former case, Amoonguss might not actually be a good Pokémon, because it is disadvantaged from the start. However, in the latter case, the format has evolved to respect Amoonguss and its tools-- that is strength. If Amoonguss can be feared enough that people will willingly shift their teams around it, and despite that respect I can still find useful situations for it-- that is the mark of a good Pokémon.
+
+#### Wolfe
+
+Good Pokémon need to meet certain criteria of mine. The most important thing a Pokémon needs in order to be good is field presence– the ability to impact the game by being on the field. This can be via damage output like Kyogre or with support like Incineroar. Without the ability to consistently impact the game, a Pokémon risks being able to be ignored which is extremely bad in VGC.
+
+Consistency is another extremely important factor to consider - both in strategy and in gameplay. I value Pokémon that don’t lose significant value once the opponent knows their moveset and item. I also value Pokémon that reduce the negative variance I am susceptible to (like Tapu Fini), and dislike Pokémon that force me to gamble (like Venusaur).
+
+I value the base stats of Pokémon highly. For a Pokémon to be good, it needs to be able to do something well, and for nearly every Pokémon what they are capable of comes down to their base stats. Not every stat needs to be especially great - Raichu is an example of a Pokémon I think is good despite only having one “good” stat (Speed), but Pokémon do need the base stats to be able to accomplish their goal. This is a big reason why I don’t love Rotom. Although Rotom-Wash and Rotom-Heat have great typing and good movepools, their stats make them really difficult to use. Most of Rotom’s stats are slightly above average, which makes it difficult to use in a specialist role.
+
+Lastly, Pokémon that are good enable the rest of their team in some way. This is most clear in support Pokémon like Incineroar or Dusclops, which allow their teammates extra breathing room, but it’s true even of offensive Pokémon like Azumarill. Each battle is not 4 one-on-one battles, it’s a 4 against 4. Forcing your opponent to focus down your offensive powerhouse while your support Pokémon disrupts, using a high damage Pokémon to eliminate the threat to your defensive win condition, using a Pokémon that is disruptive to put your opponent out of position before going into a Pokémon with high damage output– these are all ways that good Pokémon can bring out the best in their teammates.
+
+#### Aaron Z.
+
+Before diving into my personal definition, I want to quickly go over my personal philosophy regarding “good” Pokémon. I strongly believe that you can make any Pokémon work competitively. HOWEVER, you have to work a LOT harder to make certain Pokémon work, which can make the game more challenging for you.
+
+My general principles for good Pokémon are as follows:
+
+- The Pokémon generally matches up well vs. most of the common Pokémon in the format (e.g. you can hit most Pokémon for neutral damage, you don’t get OHKOed by the most common threats)
+
+- The Pokémon commands pressure while it’s out on the field, ideally with no setup required (e.g. Zacian-C can hit almost every Pokémon for at least neutral damage and doesn’t need speed control or an attack-boosting move to deal large amounts of damage)
+
+Looking at it from the opposite side, here are some problems that I generally tend to see in Pokémon that I don’t consider good.
+
+- The Pokémon needs to use a setup move or item in order to deal substantial damage
+
+- The Pokémon needs a certain field state (e.g. weather, Trick Room/Tailwind) to succeed
+
+- The Pokémon does not match-up well vs. a significant number of common Pokémon
+
+- I generally don’t feel like I have “safe” or “consistent” plays to make with the Pokémon & feel like I constantly need to make hard predictions to gain an advantage with it
+
+- The Pokémon lacks good move coverage, resulting in it relying on too many attacks of the same type
+
+However, I think one thing that’s really tough about Pokémon is that it’s hard to distinguish where your exact weaknesses are. It can be in team-building, in team preview, making good predictions, etc. I generally find that when you use “good” Pokémon, it’s a bit easier to see where the holes in your game are. (As a converse - when you use Pokémon that are not as “good,” those Pokémon often directly contribute to making the game more difficult at every stage)
+
+I also think that there is a common misconception that “good” Pokémon are all common. That’s often not the case. Sejun Park won the 2014 World Championships with Pachirisu, which saw very little play throughout the season. I’d argue that Pachirisu fits under my definition of good -- it just flew under the radar for most people that season since it saw so little usage. Thus, don’t make the mistake of thinking that any uncommon Pokémon is bad - there are plenty of other Pokémon/sets like Pachirisu waiting to be discovered.
+
+### Wrapping Up
+
+There is no one truth to what makes a Pokémon good or worth using. We improve at this game by learning endlessly, especially from each other. Chances are that your principles are different from the person you're talking to. Having a discussion about your opinions with people who are at a similar place in their Pokémon journey is, in my mind, the best way to improve at this game, and the best way to find the success that you seek.
+
+Teambuilding Home
+
+Teambuilding Home
+
+Next In Abstract Building Blocks: Synergy
+
+Next In Abstract Building Blocks: Synergy

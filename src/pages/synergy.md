@@ -1,0 +1,117 @@
+# Synergy — VGC guide
+
+Source: https://www.vgcguide.com/synergy
+
+---
+
+## Synergy
+
+10min 7sec read
+
+A look into how Pokémon sometimes work well together and sometimes don't.
+
+Written by Wolfe Glick
+
+Teambuilding / Abstract Building Blocks
+
+Synergy is a broad term used in teambuilding to talk about how well your Pokémon work together. Specifically, how well do they cover for each other's weaknesses and enable each other’s strengths? Because VGC battles are complex and dynamic, these symbiotic relationships can play out in many different ways. Here are a few quick examples of synergy:
+
+- Weather Setter and Weather Sweeper (e.g. Politoed + Kingdra): Politoed’s Drizzle Ability sets up the rain for Kingdra’s Swift Swim ability and Water-type attacks, and can further boost Kingdra’s attacks with Helping Hand
+
+- Fake Out and Trick Room (e.g. Incineroar + Dusclops): Using Fake Out causes one of your opponent’s Pokémon to flinch, meaning an ally Pokémon can use Trick Room more easily
+
+- Trick Room setters and slow attackers (sweepers) (e.g. Cofagrigus + Conkeldurr): Using Trick Room allows other slow attackers to move first
+
+- Intimidate and frail partners (e.g. Landorus-T + Raichu): A Pokemon with Intimidate drops opponent’s Attack, meaning that ally Pokémon with lower physical Defense stats have more breathing room
+
+- Pokémon that slow the pace of the game down and Pokémon that like to set up (e.g. Grimmsnarl + Tapu Fini): One Pokémon slows your opponents momentum by reducing their damage output, while the partner becomes gradually stronger.
+
+These Pokémon combinations play out in different ways, which demonstrates the scope of synergy’s effect on a battle. Furthermore, as you can see above, the synergy between the Pokémon depends on what each contributing Pokémon is capable of– typing, stats, moves, and abilities all affect how your team will work together. The synergy between two or more Pokémon is roughly broken down into two main categories: offensive synergy and defensive synergy.
+
+- Offensive synergy: How do these Pokémon complement each other offensively? (Taking knockouts, dealing complementary damage, giving each other more opportunities to attack)
+
+- Defensive synergy: How do these Pokémon complement each other defensively? (Switching in for each other, shoring up each other’s weaknesses)
+
+These synergies are not binary: different Pokémon combinations will have different amounts of offensive and defensive synergy. To return to our examples above:
+
+- Politoed and Kingdra: This pair has offensive synergy with its strong and fast Rain-boosted attacks. However, Politoed and Kingdra don’t really have defensive synergy: they are weak to similar attacks, and can’t protect each other from Pokémon that threaten super effective damage.
+
+- Fake Out and Trick Room: We wouldn’t really classify Fake Out with Trick Room as a defensive synergy, although it allows the attack to go off, so this combination is synergistic to some extent.
+
+- Trick Room setters and slow attackers (sweepers): This is a purely offensive synergy; when Trick Room gets up, the slow attackers move first.
+
+- Intimidate and frail partners: This is a defensive synergy: Intimidate allows the defensively weak partner to attack in situations where it may otherwise be threatened.
+
+- Setup and Slowdown Pokémon: These Pokémon are often naturally defensive, and by working together, they can increase their defensive position while gradually threatening offense.
+
+Offensive and defensive synergy are ultimately defined by how the Pokémon work together towards your goal of winning the battle. Do these Pokémon work together by taking knockouts at a brisk pace or by firing off strong attacks that opponents can’t withstand? Or do they work together by tactically covering each other’s bases, positioning and grinding out the opponent until you reach certain victory?
+
+In the rest of this article, we’ll talk more in detail about offensive and defensive synergy, and discuss pitfalls and other contextual factors of synergy in teambuilding.
+
+### Offensive Synergy
+
+Offense in Pokémon is all about moving before your opponent, dealing huge amounts of damage, and taking knockouts. Offensive synergy, then, is all about how your Pokémon work together to accomplish those goals. Here are a few ways that Pokémon can do that together:
+
+- Complementary damage. Pokémon synergize offensively if they each threaten different subsets of the pool of available Pokémon with their damage output. If they can work together to take key knockouts or to make switching difficult for your opponent, you’ll have a great offensive position.
+
+- Cover a weakness. If you like the pace that one Pokémon deals damage at, add a Pokémon which can knock out one of its central weaknesses to sit next to it.
+
+- Overwhelming damage. The prior strategies focus on attacking different areas of the type chart. On the other hand, it’s possible to achieve such a high level of damage that the defending Pokemon’s types almost don’t matter– you’ll knock them out regardless. Stacking modifiers such as boosts and Helping Hand are key to this sort of strategy.
+
+Offensive synergy is not only about the attacking power of the Pokémon you’re using– they should use strong attacks that hit large swaths of the available Pokémon for significant damage– but the pace at which these Pokémon attack. Remember, to knock a Pokémon out, you’re going to have to either withstand an attack or move first. Speed and priority are important factors for offensive synergy as well.
+
+Offensive synergy is not the same as setup, which is a different strategy. For example, Dragapult’s Surf does not have offensive synergy with Coalossal: it sets Coalossal up, but has no other effect in battle (outside of weak spread damage). All of the damage is being dealt by Coalossal in this case. Dragapult’s Dragon Darts may in fact synergize offensively with Coalossal; it can finish off Pokemon that Coalossal might have barely missed knocking out, and it deals boosted damage to Dragon-type Pokémon that might resist some of Coalossal’s attacks. Offensive synergy is about how the Pokémon work together to knock out threats.
+
+#### EXAMPLE
+
+One of the best examples of offensive synergy is Primal Groudon + Xerneas: Xerneas’ Fairy attacks are resisted by Poison, Steel, and Fire - all 3 of which Primal Groudon hits for super effective damage.
+
+Normally Groudon and Xerneas synergized well by eliminating the others’ threats - Groudon could KO pesky Steel-type pokemon like Bronzong and Stakataka, or other threats like Amoonguss, while Xerneas was able to deal enormous damage to Pokemon like Kyogre and Rayquaza. The key to these two Pokemon working together was that they were nearly impossible to stop without losing key resources - resources that very often were neaded to stop the other part of the duo.
+
+While Groudon and Xerneas normally worked best when paired with support Pokemon, clearing the way for the other to sweep, they also exerted enormous offensive pressure when on the field together. In this match, Gabriel Agati uses their Choice Scarf Ditto to copy their opponents Groudon and pairs it with their own Xerneas. This combination allows Gabriel to deal enough damage to clean up the game once the Xerneas is knocked out.
+
+#### EXAMPLE
+
+Pokemon have poor offensive synergy if having them on the field together doesn’t threaten many additional Pokemon in the format as having only one of them on the field. One example of this is Xerneas and Ferrothorn. Once boosted, Xerneas can deal with nearly any Pokemon that doesn’t resist its attacks, and unfortunately Ferrothorn offers nothing to help with the Fire and Steel types that are often used in response to Xerneas.
+
+### Defensive Synergy
+
+Conversely, defensive synergy is all about achieving defensive goals that move you closer to victory. It’s tricky to play defensively in Pokémon (especially VGC) -- it’s harder to take damage and win than to deal damage and win. Defensive play is about switching your Pokémon smartly, taking attacks, and navigating to positions where your opponent can’t break your defenses.
+
+An important aspect of defensive play is “switchability”, or the ability of one Pokémon to switch in for another. Switchability is a factor of many attributes, but most importantly typing and base stats. Two Pokémon are defensively synergistic if they can switch in on attacks that would threaten each other without taking much damage.
+
+#### EXAMPLE
+
+A set of Pokemon that share defensive synergy can be the basis for constructing a team and form a core. A synergetic core is a predetermined set of synergies in typing that work together - some most famous examples are the Fire/Water/Grass core (featuring Fire-, Water-, and Grass-type Pokemon) and the “Fantasy”core (Fairy-, Dragon-, and Steel-type Pokemon). These are a blueprint of typings that naturally cover each other well, and many players use them to give direction in teambuilding.
+
+For example, Primarina and Ferrothorn have good defensive synergy - Primarina can switch into the Fire- and Fighting-type super effective attacks aimed at Ferrothorn, and Ferrothorn can switch into the Electric-, Grass-, and Poison-type super effective attacks aimed at Primarina. Both Pokemon also have excellent defensive stats. An example of poor defensive synergy is a team of all Fire-type Pokemon– if an opponent has a threatening Ground-, Water-, or Rock-type, you won’t have the ability to play defensively and conserve your Pokemon.
+
+#### EXAMPLE
+
+Switchability isn’t limited to typing. Even though Pokemon like Dusclops and Porygon2 don’t resist too many types, they can still be used effectively defensively due to their natural bulk and recovery. Conversely, Pheromosa with its atrocious bulk never has good defensive synergy with anything else, because its defensive stats are too low.
+
+In Double Battles, where you have two Pokémon on the field at a time, it’s not enough to have great defensive stats or to resist a Pokemon’s attack-- an opponent may just end up targeting your partner Pokémon! Some of your Pokémon may have abilities that boost your whole team’s defenses or drop all of your opponent’s offensive capabilities. Examples include the moves Light Screen and Reflect, and the ability Intimidate. Smart use of these tools can prevent your opponents from breaking through both of your Pokémon on the field— not just the user.
+
+Although Follow Me and Rage Powder are great defensive tools, we wouldn’t call them defensive synergy. Amoonguss’ Rage Powder does not have defensive synergy with Xerneas, but rather allows Xerneas to set up. Instead, Amoonguss has great defensive synergy with many Pokemon because of its Grass and Poison typing– it can make use of that typing to switch in and threaten opponents with Spore.
+
+### Anti-Synergy
+
+Anti-synergy is the term for when your Pokémon get in the way of one another, and it’s surprisingly common. Pokémon like Tapu Fini have anti-synergy with Amoonguss - Amoonguss wants to use Spore to put foes to sleep, but Tapu Fini's Misty Surge prevents status conditions. Having multiple weather setters or terrain setters can also be an example of anti synergy. Prankster Pokémon or Pokémon that employ strong priority moves have anti-synergy with Psychic Terrain setters Indeedee and Tapu Lele. Some anti-synergy is generally acceptable on a team (though not ideal), such as teams that use both Tapu Fini and Amoonguss.
+
+### Metagame
+
+The types of synergies you need, especially in reference to typing, vary depending on the metagame. There are certain formats where playing without a Steel-type Pokémon can make your life very difficult, and there are other formats where Steel-types are totally optional. There are some formats where you want to make sure you’re using as many different typings as possible, and other formats where traditional rules and assumptions about typing go out the window. There’s no blueprint for the types you need when building, even if some types go together better than others.
+
+If you aren’t sure which synergies to start with, take a look at teams that are performing well in the current format. Pay attention to how many teams share common types– for example, do most teams have a Steel-type Pokémon? Are there common pairings beyond just the individual usage stats, or does anything else jump out at you (is Intimidate on every team? Does every team have Taunt?) As you become more comfortable with the game you’ll be able to form your own inferences about what is needed in a format.
+
+### Wrapping Up
+
+This may seem like a lot of information, but the short version is: you want to make sure the Pokémon on your team work well together, and at the very least don’t get in the way of one another.
+
+Teambuilding Home
+
+Teambuilding Home
+
+Next In Abstract Building Blocks: Cores and Modes
+
+Next In Abstract Building Blocks: Cores and Modes
