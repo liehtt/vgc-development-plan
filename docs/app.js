@@ -393,15 +393,16 @@
         const stale = !last || ageDays >= BACKUP_NUDGE_DAYS;
         backupEl.className = 'stat-card backup-card ' + (stale ? 'stale' : 'fresh');
         backupEl.innerHTML = `
-          <h3>Backup</h3>
+          <h3>Backup &amp; export</h3>
           <div class="backup-status">
             ${last
               ? `Last backup: <strong>${formatRelativeTime(last)}</strong>${ageDays >= BACKUP_NUDGE_DAYS ? ' — time to back up' : ''}`
               : '<strong>No backup yet.</strong> Download one to be safe.'}
           </div>
           <div class="backup-actions">
-            <button class="btn-secondary" data-action="export">⬇ Download backup</button>
-            <button class="btn-secondary" data-action="import">⬆ Restore from file</button>
+            <button class="btn-secondary" data-action="export" title="Full backup (.json) — restore later, includes embedded replay logs">⬇ Backup (.json)</button>
+            <button class="btn-secondary" data-action="import" title="Restore from a previously downloaded backup file">⬆ Restore</button>
+            <button class="btn-secondary" data-action="export-md" title="Lighter, human-readable export with summary stats and a suggested AI prompt — drop into ChatGPT/Claude for analysis">📋 AI summary (.md)</button>
           </div>
         `;
       }
@@ -874,6 +875,159 @@
     toast.success('Backup downloaded.');
   }
 
+  // ---------------------------------------------------------------
+  // Markdown export (for AI analysis)
+  // Lighter than full JSON: drops embeddedLog, keeps all structured fields,
+  // adds summary stats. Easy to paste into ChatGPT / Claude / Gemini.
+  // ---------------------------------------------------------------
+  function buildMarkdown() {
+    const team = state.currentTeam;
+    const games = [...state.games].sort((a, b) =>
+      new Date(a.playedAt) - new Date(b.playedAt));
+    const today = new Date().toISOString().slice(0, 10);
+
+    const wins = games.filter(g => g.result === 'W').length;
+    const losses = games.filter(g => g.result === 'L').length;
+    const wr = games.length ? Math.round(wins / games.length * 100) : 0;
+    const errorCounts = { knowledge: 0, positioning: 0, planning: 0, none: 0 };
+    for (const g of games) {
+      if (errorCounts.hasOwnProperty(g.errorType)) errorCounts[g.errorType]++;
+    }
+
+    const period = games.length
+      ? `${games[0].playedAt.slice(0, 10)} → ${games[games.length - 1].playedAt.slice(0, 10)}`
+      : '(no games yet)';
+
+    const lines = [];
+    lines.push(`# VGC Training Log — exported ${today}`);
+    lines.push('');
+    lines.push('> A human/AI-readable summary of all games logged in the VGC training tool.');
+    lines.push('> Drop this into ChatGPT, Claude, or Gemini and ask for analysis (suggested prompt at the bottom).');
+    lines.push('> Embedded battle logs are *not* included to keep this file small — see the JSON backup if you need them.');
+    lines.push('');
+
+    // Summary
+    lines.push('## Summary');
+    lines.push('');
+    lines.push(`- **Period covered**: ${period}`);
+    lines.push(`- **Total games**: ${games.length}`);
+    lines.push(`- **Record**: ${wins}W – ${losses}L (${wr}% win rate)`);
+    lines.push('- **Error type distribution** (across all games):');
+    for (const [k, v] of Object.entries(errorCounts)) {
+      if (v > 0) lines.push(`  - ${ERROR_TYPES[k]}: ${v} (${Math.round(v / games.length * 100)}%)`);
+    }
+    lines.push('');
+
+    // Top error types in losses (Phase 1 checkpoint)
+    const { rows: topErrors, lossesAnalyzed } = topErrorTypesInLastNLosses(games, 10);
+    if (lossesAnalyzed > 0) {
+      lines.push(`### Top error types in last ${lossesAnalyzed} losses`);
+      lines.push('');
+      topErrors.forEach(([type, count], i) => {
+        lines.push(`${i + 1}. ${ERROR_TYPES[type]} — ${count}×`);
+      });
+      lines.push('');
+    }
+
+    // Tilt
+    const { sessionsExamined, tiltSessions } = tiltStatus(games);
+    if (sessionsExamined > 0) {
+      lines.push('### Tilt protocol (last 14 days)');
+      lines.push('');
+      lines.push(`- Sessions examined: ${sessionsExamined}`);
+      lines.push(`- Sessions with 3+ consecutive losses: ${tiltSessions} ${tiltSessions === 0 ? '✅' : '⚠️'}`);
+      lines.push('');
+    }
+
+    // Team
+    if (team) {
+      lines.push('## Current team');
+      lines.push('');
+      lines.push(`- **Name**: ${team.name || '—'}`);
+      lines.push(`- **Format**: ${team.format || '—'}`);
+      if (team.sourceUrl) lines.push(`- **Source**: ${team.sourceUrl}`);
+      if (team.mons?.length) lines.push(`- **Mons**: ${team.mons.join(', ')}`);
+      lines.push('');
+      if (team.reverseEngineeringNotes) {
+        lines.push('### Reverse-engineering notes');
+        lines.push('');
+        lines.push(team.reverseEngineeringNotes);
+        lines.push('');
+      }
+    }
+
+    // Games (chronological)
+    lines.push('## Games (chronological)');
+    lines.push('');
+    if (games.length === 0) {
+      lines.push('_No games logged yet._');
+      lines.push('');
+    }
+    for (const g of games) {
+      const date = new Date(g.playedAt).toISOString().replace('T', ' ').slice(0, 16);
+      const myLead = (g.preGame?.myLead || []).join(' + ') || '—';
+      const theirLead = (g.preGame?.theirLeadGuess || []).join(' + ') || '—';
+      const myFour = (g.preGame?.myFour || []).join(', ') || '—';
+      const resultIcon = g.result === 'W' ? '🏆 Win' : '💀 Loss';
+
+      lines.push(`### ${date} — ${resultIcon} (${g.id})`);
+      lines.push('');
+      lines.push(`- **My WC**: ${g.preGame?.myWinCondition || '—'}`);
+      lines.push(`- **Their WC (guess)**: ${g.preGame?.theirWinConditionGuess || '—'}`);
+      lines.push(`- **My lead**: ${myLead}`);
+      lines.push(`- **Their lead**: ${theirLead}`);
+      lines.push(`- **My 4**: ${myFour}`);
+      if (g.pivotalTurn) lines.push(`- **Pivotal turn**: ${g.pivotalTurn}`);
+      lines.push(`- **Error type**: ${ERROR_TYPES[g.errorType] || '—'}`);
+      if (g.lesson) lines.push(`- **Lesson**: ${g.lesson}`);
+      if (g.replay?.url) lines.push(`- **Replay URL**: ${g.replay.url}`);
+      if (g.replay?.embeddedLog) lines.push(`- **Embedded log**: present (${g.replay.embeddedLog.length.toLocaleString()} chars; not included in this export)`);
+      lines.push('');
+    }
+
+    // Suggested AI prompt at the bottom
+    lines.push('---');
+    lines.push('');
+    lines.push('## Suggested AI analysis prompt');
+    lines.push('');
+    lines.push('Copy and paste this above the log file when handing it to an AI:');
+    lines.push('');
+    lines.push('```');
+    lines.push('This is my VGC game log. For each game I tracked: pre-game win conditions');
+    lines.push('and leads, post-game pivotal turn, my self-diagnosed error type');
+    lines.push('(knowledge gap / positioning / planning failure / none), and a one-sentence');
+    lines.push('lesson. Some games have a replay URL.');
+    lines.push('');
+    lines.push('Analyze and tell me:');
+    lines.push('1. Recurring patterns in my errorType across games');
+    lines.push('2. Whether my self-diagnosed error types seem internally consistent');
+    lines.push('   with my own lessons (am I misjudging my own mistakes?)');
+    lines.push('3. Any lead matchups (mine vs. theirs) where I underperform');
+    lines.push('4. One concrete drill I should focus on next based on this data');
+    lines.push('5. The single most actionable change I could make');
+    lines.push('');
+    lines.push("Be specific. Reference game IDs. Don't soften — I want honest review.");
+    lines.push('```');
+    lines.push('');
+
+    return lines.join('\n');
+  }
+
+  function exportMarkdown() {
+    const md = buildMarkdown();
+    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const today = new Date().toISOString().slice(0, 10);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `vgc-log-${today}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast.success('Markdown summary downloaded — ready for AI analysis.');
+  }
+
   function importData() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -978,6 +1132,7 @@
       if (!action) return;
       if (action === 'new-game') GameForm.open();
       else if (action === 'export') exportData();
+      else if (action === 'export-md') exportMarkdown();
       else if (action === 'import') importData();
       else if (action === 'set-team') Tabs.switchTo('team');
     });
