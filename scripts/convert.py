@@ -892,9 +892,10 @@ POKEBALL_SVG = '''<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" ar
 
 
 def header_html(css_path_prefix, active=None):
-    """Render the global site header. active in {'home','library',None}."""
+    """Render the global site header. active in {'home','library','log',None}."""
     home_class = ' class="active"' if active == "home" else ""
     library_class = ' class="active"' if active == "library" else ""
+    log_class = ' class="active"' if active == "log" else ""
     return f'''<header class="site-header">
   <div class="header-inner">
     <a class="logo" href="{css_path_prefix}index.html">
@@ -905,6 +906,7 @@ def header_html(css_path_prefix, active=None):
       <a href="{css_path_prefix}index.html"{home_class}>🏠 Training plan</a>
       <a href="{css_path_prefix}library.html"{library_class}>📚 Article library</a>
       <a href="{css_path_prefix}notes-distilled.html">📝 Quick notes</a>
+      <a href="{css_path_prefix}log.html"{log_class}>📊 My log</a>
     </nav>
   </div>
 </header>'''

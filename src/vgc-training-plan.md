@@ -118,6 +118,8 @@ Goal: (a) discover *your specific* error patterns by playing 10 honestly-logged 
 
    At the end of 10 games, count error types. The top 2 categories are your bottleneck. **You can't proceed past Phase 1 until you can name your top 3 recurring error types.**
 
+   [+ Log a baseline game →](log.html#new)
+
 4. **Pre-game protocol — every game from now on, fill these in before turn 1** (verbally / mentally is fine, written is better for the first 30 games):
    - My win condition this game is: ___
    - Their win condition (best guess) is: ___
@@ -143,6 +145,8 @@ Goal: (a) discover *your specific* error patterns by playing 10 honestly-logged 
 7. **Ladder cadence: 2 sessions/week, 3 games per session.** ~6 games/week. Don't push past it for the first month, even if you're enjoying it. (If you have unusually high tolerance and want to grind harder, the upper end is ~40-60 games over Phase 1 total — but if you're hitting that, you should also be hitting checkpoint 1 sooner.)
 
 8. **After every loss** (not "every game" — losses), before queuing again: open the replay (Showdown auto-saves on the battle screen — click "Save replay"). Watch the **last 3 turns**. Add to your log: Key turn / Error type / One lesson. 5 minutes max.
+
+   [+ Log this game →](log.html#new)
 
 **Checkpoint 1** (don't skip — this is the "did I really learn doubles?" gate):
 
