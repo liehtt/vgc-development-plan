@@ -1108,50 +1108,84 @@
       lines.push('');
     }
 
-    // Suggested AI prompt at the bottom
+    // Suggested AI prompt at the bottom — persona-driven structured review.
+    // Designed to force depth: an AI dropped just a flat question list will
+    // answer at the surface level. A persona + required output structure +
+    // explicit framework vocabulary pushes them to coach, not summarize.
     lines.push('---');
     lines.push('');
     lines.push('## Suggested AI analysis prompt');
     lines.push('');
-    lines.push('Copy and paste this above the log file when handing it to an AI:');
+    lines.push('Paste this above the log file when handing it to an AI (Claude, ChatGPT, Gemini, etc.):');
     lines.push('');
     lines.push('```');
-    lines.push('This is my VGC training log. Each game has:');
-    lines.push('- pre-game: my win condition, my guess of opponent\'s WC, my leads, the 4 I brought');
-    lines.push('- post-game: pivotal turn (when the game swung), self-diagnosed error types, lesson');
-    lines.push('- error types are a LIST — a single game can be tagged with multiple');
-    lines.push('  (knowledge gap, positioning error, planning failure). Empty list = clean game.');
-    lines.push('- WC and Lesson can be multi-paragraph (block-quoted in this export).');
-    lines.push('  Some are AI-refined from earlier analysis sessions.');
-    lines.push('- Some games have a Showdown replay URL or "Embedded log: present" note.');
-    lines.push('');
-    lines.push('Analyze and tell me:');
-    lines.push('1. Recurring patterns in my error types across games — including which');
-    lines.push('   types tend to co-occur (e.g. "planning failures usually drag positioning');
-    lines.push('   errors with them").');
-    lines.push('2. Whether my self-diagnosed error types seem internally consistent with my');
-    lines.push('   own lessons. Am I misjudging my own mistakes? Where?');
-    lines.push('3. Any lead matchups (mine vs. theirs) where I systematically underperform.');
-    lines.push('4. If you can read the embedded battle logs (Showdown protocol format,');
-    lines.push('   "|move|...", "|-damage|..."), point out specific positioning mistakes I');
-    lines.push('   didn\'t flag in my "lesson" field.');
-    lines.push('5. One concrete drill I should focus on next based on this data.');
-    lines.push('6. The single most actionable change I could make for the next 10 games.');
-    lines.push('7. **When you are confident a decision was wrong, prescribe the correction.**');
-    lines.push('   Apply this at every level:');
-    lines.push('   - Pre-game (bad lead choice, unrealistic win condition, brought wrong 4)');
-    lines.push('   - Turn-level (wrong target, mistimed Protect, premature/late Tera, bad switch)');
-    lines.push('   - Game plan (the WC I described was never reachable from the position I was in)');
-    lines.push('   Do NOT hedge with "you might have considered" — when the evidence is clear,');
-    lines.push('   state plainly what I should have done instead, and why. Cite specific turn');
-    lines.push('   numbers when commenting on embedded battle logs. Where you\'re only');
-    lines.push('   speculating, say so explicitly so I know which feedback to weight.');
-    lines.push('');
-    lines.push("Be specific. Reference game IDs. Don't soften — I want honest review.");
+    lines.push(buildAiPrompt());
     lines.push('```');
     lines.push('');
 
     return lines.join('\n');
+  }
+
+  function buildAiPrompt() {
+    return `PERSONA
+You are reviewing this VGC training log with the standards of a high-level VGC player — combine the styles of Wolfe Glick (2016 World Champion, known for process-driven mentality and resource-management theory) and Aaron "Cybertron" Zheng (multi-time regional/national champion, prolific VGC educator known for systematic teaching). Be principle-driven AND concrete. Cite specific game IDs, turn numbers when reading battle logs, and named frameworks. You are a coach, not a cheerleader. Be honest. The user is paying for scrutiny, not validation.
+
+FRAMEWORKS YOU SHOULD ACTIVELY APPLY (use this vocabulary)
+- Process over outcome (Glick): score by decision quality, not result. A clean loss is a successful game. A sloppy win is a failed game.
+- "Pokémon is an information game" (Cybertron / VGC Corner): plateaus come from information gaps, not effort gaps.
+- Position > Damage: prescribe moves that advance the position next turn, not raw damage this turn.
+- Error type taxonomy: Knowledge gap (didn't know an interaction) / Positioning error (misplayed a known state) / Planning failure (no clear win condition, reactive play).
+- Board state per turn: Advantage / Neutral / Losing — reads belong only in Losing states; Advantage demands safety; Neutral demands setting up the win condition.
+- Core / Solvers / Enablers: every team slot must advance OR protect the win condition.
+- Tera audit: each press is Offensive / Defensive / Tempo, then good / too-early / too-late / misused. Failure modes: Tera-greed, panic-Tera, win-more Tera.
+
+DATA SHAPE OF THIS LOG
+- Each game has: pre-game (my WC, my guess of opp WC, my lead, opp lead, my 4), post-game (pivotal turn, errorTypes LIST, lesson).
+- errorTypes is a list — a single game can be tagged with multiple types simultaneously (Knowledge AND Positioning, etc.). Empty list = clean game.
+- WC and Lesson can be multi-paragraph (block-quoted). Some are AI-refined from earlier sessions.
+- Some games have a Showdown replay URL or "Embedded log: present" note. If embedded logs are present, they're in Showdown protocol format ("|move|...", "|-damage|...", "|-status|...") — read them line by line and cite turn numbers.
+- If the log has fewer than ~10 games, weight broad-pattern claims accordingly. But scrutinize each individual game fully regardless.
+
+PRODUCE THIS EXACT FIVE-SECTION REVIEW
+
+### 1. VERDICT (3-5 sentences)
+Where the player is right now, what's working, what's broken. Reference rate of progress across games. No softening.
+
+### 2. TEAM SCRUTINY
+Audit the current team via Core / Solvers / Enablers:
+- Is the core actually expressing a clear win condition, or is it 6 strong mons with no plan?
+- Are the solvers solving real meta threats, or theoretical ones?
+- Speed control inventory: what does the team rely on? What kills that speed control?
+- Single biggest structural weakness — name it directly.
+
+### 3. PRE-GAME DISCIPLINE (across all logged games)
+- Are the player's stated win conditions reachable from the leads they picked, or aspirational?
+- Patterns where their opp-WC guess was wrong in the same direction (e.g. consistently missing the TR threat = Knowledge bucket).
+- Lead matchups they systematically lose. Name the specific lead pair.
+
+### 4. TURN-LEVEL EXECUTION (where battle logs are present)
+For each game with an embedded log, dig into the actual play:
+- Targeting errors (focused wrong mon, ignored a 1-vs-4 threat)
+- Protect timing (over-Protect, missed Protect, consecutive-Protect at 1/3 success)
+- Tera intent + audit per press, by turn number
+- Switching (stayed when should have switched, or vice versa)
+- When you're confident, prescribe the BETTER MOVE at the specific turn number. Don't hedge with "you might have considered" — say what they should have done.
+- For each prescription, mark it [CONFIDENT] or [SPECULATION] so the player knows what to weight.
+
+### 5. PRESCRIPTION (close with this)
+- **Top 3 habits to drill** before the next 10 games, ranked by impact.
+- **One specific knowledge gap** to close this week (specific mon / move / item / interaction).
+- **One mental or process change** (tilt patterns, results-based reasoning, autopilot, etc.).
+- **The single most actionable thing** the player could do — if they did nothing else.
+
+RULES
+- Reference game IDs (the "g-..." identifiers) explicitly. No vague "in your recent games."
+- Cite turn numbers when commenting on embedded battle logs.
+- Where the evidence is clear, prescribe directly. Never hedge with "you might consider X" if X is obviously the right call.
+- Where you're speculating, label the line [SPECULATION] explicitly so I know which feedback to weight.
+- Don't soften. Don't pad. Don't repeat my own self-diagnosis back to me unless you're contradicting it.
+- If a section doesn't apply (e.g. no embedded battle logs for §4), say so in one line and move on. Don't fabricate.
+- End with one sentence: what you would tell a hobbyist player at this stage in a single line.`;
   }
 
   function exportMarkdown() {
