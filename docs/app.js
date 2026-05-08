@@ -1207,8 +1207,11 @@ Produce this exact 7-section breakdown:
 - Did I bring the right 4? If not, which of my 2 benched mons should have come instead, and what would have changed?
 - If I missed an "obvious combination" on the opponent's team (Fake Out + setup, redirection + sweeper, weather + abusers, speed control + nuke, etc.), name it.
 
-### 2. TURN-BY-TURN WALKTHROUGH (only if embedded log is present)
-For EVERY turn from start to end, produce this format:
+### 2. TURN-BY-TURN WALKTHROUGH (only if embedded log is present) — COMPLETENESS IS MANDATORY
+
+**Step 1 — count the turns.** Before producing any turn analysis, scan the embedded log for "|turn|N" markers (or count "|move|" pairs if turn markers are absent) and state the count explicitly as the first line of this section. Format: "This game has N turns."
+
+**Step 2 — produce exactly N blocks, numbered 1 through N.** Use this exact format for each:
 
 > **Turn N — Board state: [Advantage / Neutral / Losing]**
 > - **Information available going in**: what I knew + what was just revealed last turn
@@ -1218,7 +1221,25 @@ For EVERY turn from start to end, produce this format:
 > - **Information bits revealed this turn**: opp moves, items shown (e.g. Sitrus trigger), abilities triggered, speed tier confirmations — flag the ones I likely missed.
 > - **Tag**: [CONFIDENT] or [SPECULATION] for any prescription.
 
-If no embedded log, write "No embedded log present — skipping turn-by-turn walkthrough." Do not fabricate a walkthrough from the structured fields alone.
+**Step 3 — close the section.** After Turn N's block, write this literal line on its own:
+
+> END OF WALKTHROUGH — N turns analyzed.
+
+Do NOT write that line until every turn from 1 to N has its own block.
+
+**HARD RULES — VIOLATIONS BREAK THIS REVIEW**
+- Do NOT skip, abbreviate, batch, or summarize any turn. A 25-turn game gets 25 separate blocks. A 40-turn game gets 40 separate blocks.
+- Do NOT write phrases like "turns 5–10 followed similar patterns," "the rest of the game played out predictably," "I'll skip the obvious turns," or any other shortcut. Every turn earns its own complete block, even if patterns repeat across turns. Repetition is itself signal.
+- Do NOT condense the format (e.g. dropping bullet points to save space). Every block must include all six bullets above.
+- The user explicitly chose Mode B because they want maximum depth on this single game. Token budget is not a concern — thoroughness is the deliverable.
+
+**IF YOUR RESPONSE WOULD HIT A LENGTH LIMIT before reaching turn N**: do NOT shorten earlier turns. Instead, output complete blocks for as many turns as fit, then end the message with:
+
+> CONTINUE FROM TURN K — please reply "continue" to resume the walkthrough.
+
+The user will reply "continue" and you produce the remaining blocks (and only the remaining blocks) starting at Turn K, then proceed with §3 onward.
+
+**IF NO EMBEDDED LOG IS PRESENT**: write "No embedded log present — skipping turn-by-turn walkthrough." on a single line. Do not fabricate a walkthrough from the structured fields. Move to §3.
 
 ### 3. PIVOTAL TURN CHECK
 - I marked turn N as the pivotal one. Do you agree?
