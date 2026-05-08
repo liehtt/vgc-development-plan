@@ -620,7 +620,7 @@ details > *:not(summary) { padding: 14px; }
 .kv-list li {
   display: flex;
   gap: 12px;
-  padding: 6px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--border-soft);
   font-size: 0.95em;
 }
@@ -629,11 +629,48 @@ details > *:not(summary) { padding: 14px; }
   flex: 0 0 130px;
   color: var(--fg-muted);
   font-weight: 600;
-  font-size: 0.88em;
+  font-size: 0.85em;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  padding-top: 2px;
 }
 .kv-list .v { flex: 1; color: var(--fg); }
+/* Block layout for long fields: label on top, value below as its own block */
+.kv-list li.kv-block {
+  display: block;
+  padding: 12px 0;
+}
+.kv-list li.kv-block .k {
+  flex: none;
+  display: block;
+  margin-bottom: 6px;
+}
+.kv-list li.kv-block .v {
+  display: block;
+  flex: none;
+}
+/* Long-text content: preserve line breaks, comfortable line height */
+.kv-list .v.text-block {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.6;
+  background: var(--bg-soft);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent);
+  font-size: 0.97em;
+  max-height: 480px;
+  overflow-y: auto;
+}
+/* Spacing between multiple error tags */
+.kv-list .v .error-tag { margin-right: 4px; }
+.error-cell .error-tag { display: inline-block; margin: 1px 2px 1px 0; }
+/* Recent-games table: cleaner lesson column */
+.recent-games-table .lesson-cell {
+  max-width: 320px;
+  font-size: 0.9em;
+  color: var(--fg-muted);
+}
 
 /* Inline log button (placed in plan markdown) */
 a.inline-log-btn,

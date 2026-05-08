@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My Log — VGC Training</title>
-<link rel="stylesheet" href="style.css?v=2">
-<link rel="stylesheet" href="app.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="app.css?v=3">
 </head>
 <body>
 
@@ -106,13 +106,14 @@
         </div>
 
         <div class="form-field">
-          <label for="gf-my-wc">My win condition <span style="color:var(--fg-muted);font-weight:400;">(1 sentence)</span></label>
-          <input type="text" id="gf-my-wc" placeholder="e.g. Get Tailwind up T1, then double-target their Calyrex">
+          <label for="gf-my-wc">My win condition <span style="color:var(--fg-muted);font-weight:400;">(any length — multi-line OK)</span></label>
+          <textarea id="gf-my-wc" rows="3" placeholder="e.g. Get Tailwind up T1, then double-target their Calyrex"></textarea>
+          <div class="help">Drag the corner to resize. Paste an AI-refined version any time.</div>
         </div>
 
         <div class="form-field">
-          <label for="gf-their-wc">Their win condition <span style="color:var(--fg-muted);font-weight:400;">(your guess, 1 sentence)</span></label>
-          <input type="text" id="gf-their-wc" placeholder="e.g. Set Trick Room turn 1, sweep with Armarouge">
+          <label for="gf-their-wc">Their win condition <span style="color:var(--fg-muted);font-weight:400;">(your guess — multi-line OK)</span></label>
+          <textarea id="gf-their-wc" rows="3" placeholder="e.g. Set Trick Room turn 1, sweep with Armarouge"></textarea>
         </div>
 
         <div class="form-row">
@@ -184,28 +185,25 @@
         </div>
 
         <div class="form-field">
-          <label>Error type</label>
-          <div class="radio-pills">
-            <label class="radio-pill" data-group="errorType" data-value="knowledge" title="Didn't know an interaction (move, ability, item, mechanic)">
-              <input type="radio" name="gf-error" value="knowledge"> 📖 Knowledge
+          <label>Error types <span style="color:var(--fg-muted);font-weight:400;">(select all that apply)</span></label>
+          <div class="radio-pills" data-multi="true">
+            <label class="radio-pill" data-group="errorTypes" data-value="knowledge" title="Didn't know an interaction (move, ability, item, mechanic)">
+              <input type="checkbox" name="gf-error" value="knowledge"> 📖 Knowledge
             </label>
-            <label class="radio-pill" data-group="errorType" data-value="positioning" title="Misplayed a known state (wrong target, bad switch, wrong Protect timing)">
-              <input type="radio" name="gf-error" value="positioning"> 🎯 Positioning
+            <label class="radio-pill" data-group="errorTypes" data-value="positioning" title="Misplayed a known state (wrong target, bad switch, wrong Protect timing)">
+              <input type="checkbox" name="gf-error" value="positioning"> 🎯 Positioning
             </label>
-            <label class="radio-pill" data-group="errorType" data-value="planning" title="No clear win condition; reactive play; lost the thread">
-              <input type="radio" name="gf-error" value="planning"> 🗺️ Planning
-            </label>
-            <label class="radio-pill" data-group="errorType" data-value="none" title="Played at your best — no major error">
-              <input type="radio" name="gf-error" value="none"> ✨ None
+            <label class="radio-pill" data-group="errorTypes" data-value="planning" title="No clear win condition; reactive play; lost the thread">
+              <input type="checkbox" name="gf-error" value="planning"> 🗺️ Planning
             </label>
           </div>
-          <div class="help">For wins, "None" means you played well. If you got bailed out, mark the actual error.</div>
+          <div class="help">Real games often have layered mistakes — pick more than one if both apply. Leave all unchecked = no error / clean game.</div>
         </div>
 
         <div class="form-field">
-          <label for="gf-lesson">Lesson <span style="color:var(--fg-muted);font-weight:400;">(1 sentence)</span></label>
-          <textarea id="gf-lesson" rows="3" placeholder="e.g. Always pre-decide the TR-up branch before turn 1."></textarea>
-          <div class="char-counter" id="gf-lesson-counter">0 / 200 (soft limit)</div>
+          <label for="gf-lesson">Lesson <span style="color:var(--fg-muted);font-weight:400;">(any length — multi-paragraph OK)</span></label>
+          <textarea id="gf-lesson" rows="6" placeholder="e.g. Always pre-decide the TR-up branch before turn 1.&#10;&#10;Paste your AI-refined version here any time — line breaks and paragraphs are preserved."></textarea>
+          <div class="char-counter" id="gf-lesson-counter">0 chars</div>
         </div>
       </div>
 
@@ -287,6 +285,6 @@ This is a free-form scratchpad — write whatever helps you understand the team.
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script src="app.js?v=2"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>

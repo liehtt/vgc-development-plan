@@ -15,7 +15,7 @@
   // Constants & defaults
   // ---------------------------------------------------------------
   const STORAGE_KEY = 'vgc-recording-v1';
-  const SCHEMA_VERSION = 1;
+  const SCHEMA_VERSION = 2;
   const SESSION_GAP_HOURS = 2;        // games within 2 hours = same session
   const TILT_LOSS_THRESHOLD = 3;      // 3 consecutive losses = tilt session
   const TILT_LOOKBACK_DAYS = 14;      // only check sessions in last 14 days
@@ -26,6 +26,33 @@
     planning: 'Planning failure',
     none: 'None',
   };
+  // Real (non-"none") error types, used by checkbox UI and dashboard counts.
+  const REAL_ERROR_TYPES = ['knowledge', 'positioning', 'planning'];
+
+  // ---------------------------------------------------------------
+  // Schema migration: v1 → v2 promotes single `errorType` string to
+  // an `errorTypes` array. Runs once on load, on the in-memory state,
+  // before persist() is ever called. Safe to re-run.
+  // ---------------------------------------------------------------
+  function migrate(s) {
+    s = s || {};
+    s.games = s.games || [];
+    const v = s.schemaVersion || 1;
+    if (v < 2) {
+      for (const g of s.games) {
+        if (!g.errorTypes) {
+          if (g.errorType && g.errorType !== 'none' && REAL_ERROR_TYPES.includes(g.errorType)) {
+            g.errorTypes = [g.errorType];
+          } else {
+            g.errorTypes = [];
+          }
+        }
+        delete g.errorType;
+      }
+      s.schemaVersion = 2;
+    }
+    return s;
+  }
 
   function emptyState() {
     return {
@@ -49,9 +76,10 @@
         if (!raw) return emptyState();
         const parsed = JSON.parse(raw);
         // Defensive: if missing keys, fill from defaults
-        return Object.assign(emptyState(), parsed, {
+        const merged = Object.assign(emptyState(), parsed, {
           settings: Object.assign(emptyState().settings, parsed.settings || {}),
         });
+        return migrate(merged);
       } catch (err) {
         console.warn('Could not parse stored data, starting fresh:', err);
         return emptyState();
@@ -234,14 +262,28 @@
     return sessions;
   }
 
+  // Helper: get the error types array for a game, normalizing across
+  // schema versions. Always returns an array of valid REAL_ERROR_TYPES strings.
+  function gameErrorTypes(g) {
+    if (Array.isArray(g.errorTypes)) {
+      return g.errorTypes.filter(t => REAL_ERROR_TYPES.includes(t));
+    }
+    if (g.errorType && REAL_ERROR_TYPES.includes(g.errorType)) {
+      return [g.errorType];
+    }
+    return [];
+  }
+
   function topErrorTypesInLastNLosses(games, n = 10) {
     const losses = games
       .filter(g => g.result === 'L')
       .sort((a, b) => new Date(b.playedAt) - new Date(a.playedAt))
       .slice(0, n);
     const counts = { knowledge: 0, positioning: 0, planning: 0 };
+    // A game with multiple error types contributes to each — that's intentional
+    // per the multi-error model. So a single loss can add to all three buckets.
     for (const g of losses) {
-      if (counts.hasOwnProperty(g.errorType)) counts[g.errorType]++;
+      for (const t of gameErrorTypes(g)) counts[t]++;
     }
     const rows = Object.entries(counts)
       .filter(([, c]) => c > 0)
@@ -432,15 +474,19 @@
                 ${recent20.map(g => {
                   const myLead = (g.preGame?.myLead || []).join(' + ');
                   const theirLead = (g.preGame?.theirLeadGuess || []).join(' + ');
-                  const lesson = g.lesson || '';
+                  const lesson = (g.lesson || '').replace(/\s+/g, ' ').trim();
+                  const types = gameErrorTypes(g);
+                  const tagsHtml = types.length === 0
+                    ? `<span class="error-tag none">—</span>`
+                    : types.map(t => `<span class="error-tag ${t}">${escapeHtml(ERROR_TYPES[t])}</span>`).join(' ');
                   return `
                     <tr class="game-row" data-game-id="${escapeHtml(g.id)}">
                       <td>${escapeHtml(formatGameDate(g.playedAt))}</td>
                       <td><span class="result-pill ${g.result}">${g.result}</span></td>
                       <td>${escapeHtml(myLead)}</td>
                       <td>${escapeHtml(theirLead)}</td>
-                      <td><span class="error-tag ${g.errorType || 'none'}">${escapeHtml(ERROR_TYPES[g.errorType] || '—')}</span></td>
-                      <td style="max-width:300px;">${escapeHtml(lesson.length > 80 ? lesson.slice(0, 80) + '…' : lesson)}</td>
+                      <td class="error-cell">${tagsHtml}</td>
+                      <td class="lesson-cell">${escapeHtml(lesson.length > 80 ? lesson.slice(0, 80) + '…' : lesson)}</td>
                     </tr>
                   `;
                 }).join('')}
@@ -512,7 +558,7 @@
       this.updateLessonCounter();
 
       this.setRadioPill('result', g?.result || '');
-      this.setRadioPill('errorType', g?.errorType || '');
+      this.setCheckPills('errorTypes', gameErrorTypes(g || {}));
 
       const dz = $('#gf-replay-dropzone');
       if (dz) {
@@ -544,18 +590,34 @@
       return checked ? checked.dataset.value : '';
     },
 
+    // Checkbox-style: multiple values can be selected.
+    setCheckPills(group, values) {
+      const set = new Set(values || []);
+      $$(`.radio-pill[data-group="${group}"]`).forEach(pill => {
+        const checked = set.has(pill.dataset.value);
+        pill.classList.toggle('checked', checked);
+        const input = pill.querySelector('input[type="checkbox"]');
+        if (input) input.checked = checked;
+      });
+    },
+
+    getCheckPills(group) {
+      return $$(`.radio-pill[data-group="${group}"].checked`).map(p => p.dataset.value);
+    },
+
     updateLessonCounter() {
       const el = $('#gf-lesson');
       const counter = $('#gf-lesson-counter');
       if (!el || !counter) return;
       const len = el.value.length;
-      counter.textContent = `${len} / 200 (soft limit)`;
-      counter.classList.toggle('warn', len > 200);
+      counter.textContent = `${len.toLocaleString()} chars`;
+      // Soft visual nudge only if extremely long (~AI-output sized)
+      counter.classList.toggle('warn', len > 1500);
     },
 
     save(saveAndAnother) {
       const result = this.getRadioPill('result');
-      const errorType = this.getRadioPill('errorType') || 'none';
+      const errorTypes = this.getCheckPills('errorTypes');
 
       if (!result) {
         toast.error('Pick a result (W or L) before saving.');
@@ -601,7 +663,7 @@
         },
         replay: replayObj,
         pivotalTurn: parseInt($('#gf-pivotal-turn').value, 10) || null,
-        errorType,
+        errorTypes,
         lesson: $('#gf-lesson').value.trim(),
       };
 
@@ -638,10 +700,23 @@
     },
 
     attach() {
-      // Radio pill click
+      // Pill click — multi-select if the parent has data-multi="true",
+      // single-select otherwise.
       $$('.radio-pill').forEach(pill => {
-        pill.addEventListener('click', () => {
-          this.setRadioPill(pill.dataset.group, pill.dataset.value);
+        pill.addEventListener('click', e => {
+          // Don't double-handle when the click was on the inner input itself.
+          if (e.target instanceof HTMLInputElement) return;
+          e.preventDefault();
+          const parent = pill.closest('.radio-pills');
+          const isMulti = parent && parent.dataset.multi === 'true';
+          if (isMulti) {
+            const wasChecked = pill.classList.contains('checked');
+            pill.classList.toggle('checked', !wasChecked);
+            const input = pill.querySelector('input[type="checkbox"]');
+            if (input) input.checked = !wasChecked;
+          } else {
+            this.setRadioPill(pill.dataset.group, pill.dataset.value);
+          }
         });
       });
 
@@ -773,17 +848,39 @@
       ? `<button class="btn-secondary" data-action="show-log">View raw log</button>`
       : '';
 
+    const types = gameErrorTypes(g);
+    const errorTypesHtml = types.length === 0
+      ? `<span class="error-tag none">No error</span>`
+      : types.map(t => `<span class="error-tag ${t}">${escapeHtml(ERROR_TYPES[t])}</span>`).join(' ');
+
+    // Helper to render long text fields with preserved line breaks.
+    // If the value is short (<60 chars, no newlines), render inline.
+    // Otherwise stack the label above the value as a "block" row.
+    function renderField(label, raw, opts = {}) {
+      const value = (raw == null || raw === '') ? '' : String(raw);
+      const isEmpty = !value;
+      const display = isEmpty ? '—' : escapeHtml(value);
+      const isLong = value.length > 60 || /\n/.test(value);
+      if (isLong && !opts.forceInline) {
+        return `<li class="kv-block">
+          <div class="k">${escapeHtml(label)}</div>
+          <div class="v text-block">${display}</div>
+        </li>`;
+      }
+      return `<li><span class="k">${escapeHtml(label)}</span><span class="v">${opts.html || display}</span></li>`;
+    }
+
     $('#modal-content').innerHTML = `
       <h2>Game on ${escapeHtml(formatGameDate(g.playedAt))} — <span class="result-pill ${g.result}">${g.result}</span></h2>
       <ul class="kv-list">
-        <li><span class="k">My WC</span><span class="v">${escapeHtml(g.preGame?.myWinCondition || '—')}</span></li>
-        <li><span class="k">Their WC (guess)</span><span class="v">${escapeHtml(g.preGame?.theirWinConditionGuess || '—')}</span></li>
-        <li><span class="k">My lead</span><span class="v">${escapeHtml(myLead || '—')}</span></li>
-        <li><span class="k">Their lead</span><span class="v">${escapeHtml(theirLead || '—')}</span></li>
-        <li><span class="k">My 4</span><span class="v">${escapeHtml(myFour || '—')}</span></li>
-        <li><span class="k">Pivotal turn</span><span class="v">${g.pivotalTurn || '—'}</span></li>
-        <li><span class="k">Error type</span><span class="v"><span class="error-tag ${g.errorType || 'none'}">${escapeHtml(ERROR_TYPES[g.errorType] || '—')}</span></span></li>
-        <li><span class="k">Lesson</span><span class="v">${escapeHtml(g.lesson || '—')}</span></li>
+        ${renderField('My WC', g.preGame?.myWinCondition)}
+        ${renderField('Their WC (guess)', g.preGame?.theirWinConditionGuess)}
+        ${renderField('My lead', myLead, { forceInline: true })}
+        ${renderField('Their lead', theirLead, { forceInline: true })}
+        ${renderField('My 4', myFour, { forceInline: true })}
+        ${renderField('Pivotal turn', g.pivotalTurn || '—', { forceInline: true })}
+        <li><span class="k">Error types</span><span class="v">${errorTypesHtml}</span></li>
+        ${renderField('Lesson', g.lesson)}
         <li><span class="k">Replay</span><span class="v">${replayLink} ${rawLogBtn}</span></li>
       </ul>
       <div class="modal-actions">
@@ -889,9 +986,14 @@
     const wins = games.filter(g => g.result === 'W').length;
     const losses = games.filter(g => g.result === 'L').length;
     const wr = games.length ? Math.round(wins / games.length * 100) : 0;
-    const errorCounts = { knowledge: 0, positioning: 0, planning: 0, none: 0 };
+    // Per-game distribution: count "no error" games separately from each error type.
+    // A game with multiple error types contributes to each of its types.
+    const errorCounts = { knowledge: 0, positioning: 0, planning: 0 };
+    let cleanGames = 0;
     for (const g of games) {
-      if (errorCounts.hasOwnProperty(g.errorType)) errorCounts[g.errorType]++;
+      const types = gameErrorTypes(g);
+      if (types.length === 0) cleanGames++;
+      for (const t of types) errorCounts[t]++;
     }
 
     const period = games.length
@@ -912,9 +1014,12 @@
     lines.push(`- **Period covered**: ${period}`);
     lines.push(`- **Total games**: ${games.length}`);
     lines.push(`- **Record**: ${wins}W – ${losses}L (${wr}% win rate)`);
-    lines.push('- **Error type distribution** (across all games):');
+    lines.push('- **Error type distribution** (each game can count toward multiple types):');
     for (const [k, v] of Object.entries(errorCounts)) {
-      if (v > 0) lines.push(`  - ${ERROR_TYPES[k]}: ${v} (${Math.round(v / games.length * 100)}%)`);
+      if (v > 0) lines.push(`  - ${ERROR_TYPES[k]}: ${v} game${v === 1 ? '' : 's'} (${Math.round(v / games.length * 100)}%)`);
+    }
+    if (cleanGames > 0) {
+      lines.push(`  - No error flagged: ${cleanGames} game${cleanGames === 1 ? '' : 's'} (${Math.round(cleanGames / games.length * 100)}%)`);
     }
     lines.push('');
 
@@ -970,18 +1075,36 @@
       const myFour = (g.preGame?.myFour || []).join(', ') || '—';
       const resultIcon = g.result === 'W' ? '🏆 Win' : '💀 Loss';
 
+      // Multi-line text helper: render long fields as their own block to keep
+      // markdown clean and readable for AI ingestion.
+      function fieldBlock(label, raw) {
+        const value = (raw == null || raw === '') ? '—' : String(raw);
+        const isLong = value.length > 80 || /\n/.test(value);
+        if (isLong) {
+          // Use blockquote so multi-paragraph content is visually grouped.
+          const indented = value.split('\n').map(line => '  > ' + line).join('\n');
+          return `- **${label}**:\n${indented}`;
+        }
+        return `- **${label}**: ${value}`;
+      }
+
+      const types = gameErrorTypes(g);
+      const errorLabel = types.length === 0
+        ? 'None / clean game'
+        : types.map(t => ERROR_TYPES[t]).join(', ');
+
       lines.push(`### ${date} — ${resultIcon} (${g.id})`);
       lines.push('');
-      lines.push(`- **My WC**: ${g.preGame?.myWinCondition || '—'}`);
-      lines.push(`- **Their WC (guess)**: ${g.preGame?.theirWinConditionGuess || '—'}`);
+      lines.push(fieldBlock('My WC', g.preGame?.myWinCondition));
+      lines.push(fieldBlock('Their WC (guess)', g.preGame?.theirWinConditionGuess));
       lines.push(`- **My lead**: ${myLead}`);
       lines.push(`- **Their lead**: ${theirLead}`);
       lines.push(`- **My 4**: ${myFour}`);
       if (g.pivotalTurn) lines.push(`- **Pivotal turn**: ${g.pivotalTurn}`);
-      lines.push(`- **Error type**: ${ERROR_TYPES[g.errorType] || '—'}`);
-      if (g.lesson) lines.push(`- **Lesson**: ${g.lesson}`);
+      lines.push(`- **Error type${types.length > 1 ? 's' : ''}**: ${errorLabel}`);
+      if (g.lesson) lines.push(fieldBlock('Lesson', g.lesson));
       if (g.replay?.url) lines.push(`- **Replay URL**: ${g.replay.url}`);
-      if (g.replay?.embeddedLog) lines.push(`- **Embedded log**: present (${g.replay.embeddedLog.length.toLocaleString()} chars; not included in this export)`);
+      if (g.replay?.embeddedLog) lines.push(`- **Embedded log**: present (${g.replay.embeddedLog.length.toLocaleString()} chars; not included in this export — see JSON backup)`);
       lines.push('');
     }
 
