@@ -1137,6 +1137,15 @@
     lines.push('   didn\'t flag in my "lesson" field.');
     lines.push('5. One concrete drill I should focus on next based on this data.');
     lines.push('6. The single most actionable change I could make for the next 10 games.');
+    lines.push('7. **When you are confident a decision was wrong, prescribe the correction.**');
+    lines.push('   Apply this at every level:');
+    lines.push('   - Pre-game (bad lead choice, unrealistic win condition, brought wrong 4)');
+    lines.push('   - Turn-level (wrong target, mistimed Protect, premature/late Tera, bad switch)');
+    lines.push('   - Game plan (the WC I described was never reachable from the position I was in)');
+    lines.push('   Do NOT hedge with "you might have considered" — when the evidence is clear,');
+    lines.push('   state plainly what I should have done instead, and why. Cite specific turn');
+    lines.push('   numbers when commenting on embedded battle logs. Where you\'re only');
+    lines.push('   speculating, say so explicitly so I know which feedback to weight.');
     lines.push('');
     lines.push("Be specific. Reference game IDs. Don't soften — I want honest review.");
     lines.push('```');
