@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My Log — VGC Training</title>
-<link rel="stylesheet" href="style.css?v=11">
-<link rel="stylesheet" href="app.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="app.css?v=12">
 </head>
 <body>
 
@@ -229,7 +229,7 @@
             <label class="compact-check">
               <input type="checkbox" id="gf-p2-support-audit">
               <span>Support-mon first-move audit done?</span>
-              <span class="tip-icon" data-tooltip="Before clicking your support mon's T1 move, ask: 'If my support dies this turn, which move leaves me the best post-support board?' For Sableye+Archaludon, the AI's decision tree: Reflect into physical burst / Light Screen into special-Fairy spread / Rain Dance only if Archaludon fires immediately / Quash for one fast must-stop attacker (and check priority denial first). Check this if you actually ran the audit.">i</span>
+              <span class="tip-icon" data-tooltip="Before clicking your support mon's T1 move, ask: 'If my support dies this turn, which move leaves me the best post-support board?'&#10;&#10;Quick tree: Reflect → physical burst · Light Screen → special/Fairy spread · Rain Dance → if support survives and damage axis can fire · Quash → one fast must-stop attacker (check priority denial first) · Protect → multiple severe threats, no clean answer.&#10;&#10;Full reference (with examples for each branch) in the Drills tab — '🛡️ Support-mon first-move audit' card.">i</span>
             </label>
 
             <label class="compact-check">
@@ -244,7 +244,7 @@
             <div class="form-field" style="margin-top:14px;">
               <label for="gf-p2-commitment">
                 Single-sentence pre-Turn-1 commitment
-                <span class="tip-icon" data-tooltip="Before turn 1, write: 'The Pokémon I must not allow free turns is ___ because ___.' Then play turns 1–3 around that sentence. The AI called this 'the single most actionable thing' — it forces you to identify the actual threat, not the flashy one. The missing-blanks for Phase 1 games were often Orthworm, Farigiraf, opposing Archaludon — not the obvious damage dealers.">i</span>
+                <span class="tip-icon" data-tooltip="Template: 'The Pokémon I must not allow free turns is ___ because ___.' Then play turns 1–3 around it.&#10;&#10;The WHY matters more than the WHO — the WHY tells you what action to take. 'Orthworm because Iron Defense + Body Press by turn 3' is actionable; 'Charizard because it's strong' isn't.&#10;&#10;Strong-vs-weak examples in the Drills tab — '✍️ Single-sentence commitment' card.">i</span>
               </label>
               <textarea id="gf-p2-commitment" rows="2" placeholder="The Pokémon I must not allow free turns is ___ because ___"></textarea>
             </div>
@@ -450,6 +450,172 @@ This is a free-form scratchpad — write whatever helps you understand the team.
       </div>
     </details>
 
+    <details class="phase2-section" id="phase2-support-audit">
+      <summary>🛡️ Support-mon first-move audit — reference card</summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>This is the framework behind the "Support-mon first-move audit done?" tag.</strong>
+          Before clicking your support mon's Turn-1 move, ask yourself one question: <em>"If my support dies this turn, which move leaves me the best post-support board?"</em>
+          The answer depends on what the opponent's threat type is — different threats want different setup moves. Most support mons have 4 viable first-move options; picking the right one matters more than picking the "best" one in isolation.
+        </div>
+
+        <div class="axis-grid">
+
+          <div class="axis-card">
+            <h4>If physical burst can KO Sableye/your support</h4>
+            <p><strong>Pick:</strong> <em>Reflect</em> (or your physical-screen equivalent).</p>
+            <p><strong>Why:</strong> if your support dies T1, you still leave the partner shielded against the physical attackers that just KO'd you. Reflect's effect persists even after the setter falls.</p>
+            <p><strong>Don't:</strong> set Light Screen against pure physical pressure — wrong screen for the matchup.</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>If special / Fairy spread can KO Sableye</h4>
+            <p><strong>Pick:</strong> <em>Light Screen</em> (or Aurora Veil if your team has Snow).</p>
+            <p><strong>Why:</strong> Sableye dies to Astral Barrage / Dazzling Gleam / Moonblast spreads. Light Screen ensures Archaludon survives the same hits next turn.</p>
+            <p><strong>This fixes:</strong> Phase 1 Games 5 and 8 — where Sableye died to Sylveon / Beedrill burst and Rain Dance turn 1 was wrong.</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>If opp is slow / damage axis can fire immediately</h4>
+            <p><strong>Pick:</strong> <em>Rain Dance</em> (or your team's field-condition enabler — Trick Room, Tailwind, Sun, etc.).</p>
+            <p><strong>Why:</strong> Sableye won't be deleted T1. Use the turn to enable Archaludon's Electro Shot for max-tempo damage from T2 onward.</p>
+            <p><strong>Don't:</strong> Rain Dance into a board that can delete Sableye — you've spent the resource for nothing.</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>If ONE fast must-stop attacker is the problem</h4>
+            <p><strong>Pick:</strong> <em>Quash</em> (or your team's priority-control move — T-Wave, Glare).</p>
+            <p><strong>Check first:</strong> priority denial (Psychic Terrain, Armor Tail, Queenly Majesty). If their board denies priority, Quash fails — pick a different setup.</p>
+            <p><strong>Don't:</strong> Quash into a Protect — wasted turn. Confirm their threat can't Protect-stall (Choice items, no Protect on usage stats).</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>If multiple severe threats and no clean answer</h4>
+            <p><strong>Pick:</strong> <em>Protect</em> (or just play defensively).</p>
+            <p><strong>Why:</strong> when no setup move is clearly right, the highest-EV move is "don't commit." Protect buys you info on what they actually click; you adjust T2.</p>
+            <p><strong>Tradeoff:</strong> opponent gets a free turn of positioning. Only use this when alternatives are genuinely worse.</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>The meta-rule</h4>
+            <p><strong>Always ask first:</strong> "Does Sableye survive this turn?" If <em>no</em>, your move must be one whose effect <em>persists</em> after Sableye falls (Reflect / Light Screen / Quash effect / status that sticks).</p>
+            <p><strong>If <em>yes</em>:</strong> you have the luxury of choosing for next-turn setup (Rain Dance, Trick Room, Tailwind).</p>
+            <p><strong>Save this tree</strong> into your team's reverse-engineering notes (Team tab) so it lives with the team.</p>
+          </div>
+
+        </div>
+      </div>
+    </details>
+
+    <details class="phase2-section" id="phase2-commitment">
+      <summary>✍️ Single-sentence commitment — examples and anti-examples</summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>This is the template behind the "Single-sentence pre-T1 commitment" tag.</strong>
+          Before turn 1, fill in the blanks:
+          <div style="margin:10px 0;padding:10px 14px;background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:4px;font-style:italic;">
+            "The Pokémon I must not allow to get free turns is <strong>___</strong> because <strong>___</strong>."
+          </div>
+          Then play turns 1–3 around that sentence. The AI's analysis called this <em>"the single most actionable thing"</em> — it forces you to identify the actual threat, not the flashy one. <strong>The WHY matters more than the WHO</strong> — the WHY tells you what action to take.
+        </div>
+
+        <h4 style="margin-top:18px;color:var(--success);">✅ Strong commitments (anchored, actionable)</h4>
+        <div class="axis-grid">
+          <div class="axis-card" style="border-left-color: var(--success);">
+            <h4>Setup-scaling threat</h4>
+            <p><em>"The Pokémon I must not allow free turns is <strong>Orthworm</strong> because <strong>it sets up Iron Defense + Body Press by turn 3 and becomes the actual win condition.</strong>"</em></p>
+            <p><strong>Why this works:</strong> the WHY tells you the action — apply pressure to Orthworm <em>early</em>, even though Garchomp is louder. Avoids the Phase 1 Game 6 trap.</p>
+          </div>
+
+          <div class="axis-card" style="border-left-color: var(--success);">
+            <h4>Field-condition pivot</h4>
+            <p><em>"The Pokémon I must not allow free turns is <strong>Calyrex-Ice under Trick Room</strong> because <strong>it's a 1-vs-4 sweeper once TR is up and my team has no fast checks.</strong>"</em></p>
+            <p><strong>Why this works:</strong> the WHY ("once TR is up") tells you the action — prevent TR setup or remove Calyrex-Ice before it gets free turns under TR.</p>
+          </div>
+
+          <div class="axis-card" style="border-left-color: var(--success);">
+            <h4>Mirror match</h4>
+            <p><em>"The Pokémon I must not allow free turns is <strong>opposing Archaludon</strong> because <strong>in mirrors it wins the damage race uncontested if I trade easy KOs instead of focusing it.</strong>"</em></p>
+            <p><strong>Why this works:</strong> directly addresses your Game 9 loss — you ate the Meowstic KO instead of forcing opposing Archaludon. This sentence at T1 would have changed the line.</p>
+          </div>
+        </div>
+
+        <h4 style="margin-top:20px;color:var(--primary);">❌ Weak commitments (anti-examples)</h4>
+        <div class="axis-grid">
+          <div class="axis-card" style="border-left-color: var(--primary);">
+            <h4>The vague one</h4>
+            <p><em>"I'll just play it out and react."</em></p>
+            <p><strong>Why it fails:</strong> no commitment, no plan. You'll default to your familiar Sableye + Archaludon script. This is the autopilot the AI flagged.</p>
+          </div>
+
+          <div class="axis-card" style="border-left-color: var(--primary);">
+            <h4>The flashy-threat trap</h4>
+            <p><em>"Kill their Calyrex-Shadow because it does damage."</em></p>
+            <p><strong>Why it fails:</strong> Calyrex-S is loud, but in many matchups <em>it's not the actual win condition.</em> Often the support mon (Indeedee setting TR, Rillaboom denying priority) is the real one. The WHO without a real WHY misleads.</p>
+          </div>
+
+          <div class="axis-card" style="border-left-color: var(--primary);">
+            <h4>The missing-WHY one</h4>
+            <p><em>"The Pokémon I must not allow free turns is Charizard because it's strong."</em></p>
+            <p><strong>Why it fails:</strong> "strong" doesn't tell you what to do. Strong how — set up Dragon Dance? Sun + Solar Beam? Wide Guard for partners? Different WHYs imply different counters.</p>
+          </div>
+        </div>
+
+        <div class="section-intro" style="margin-top:16px;">
+          <strong>Quality test for your commitment:</strong> can someone else read it and know <em>what move you should click on T1</em>? If yes, the commitment is strong. If they'd shrug, the WHY isn't doing its job — rewrite it.
+        </div>
+      </div>
+    </details>
+
+    <details class="phase2-section" id="phase2-routine">
+      <summary>🧠 The 4 in-game habits — unified routine</summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>This is the per-game routine that ties all 4 Phase 2 in-game habits together.</strong>
+          Each habit on its own is just a tag in the logger; together they form a turn-by-turn discipline. Aim to run all of them every game until they're reflexive — usually 4–6 weeks of Phase 2 play.
+        </div>
+
+        <h4 style="margin-top:14px;">📍 Stage 1 — Team preview (the 90-second window)</h4>
+        <ol style="font-size:0.95em;line-height:1.6;">
+          <li><strong>Threat-type sweep (axes 1–6).</strong> Flag which 1–3 axes apply to this opp. → see 📋 reference card above.</li>
+          <li><strong>Pick the 4 you'll bring.</strong> Backwards-eliminate the 2 to bench.</li>
+          <li><strong>Run the support-mon first-move audit.</strong> Identify which setup move handles the flagged axes. → see 🛡️ reference card above.</li>
+          <li><strong>Write the single-sentence commitment.</strong> "The Pokémon I must not allow free turns is ___ because ___." → see ✍️ reference card above.</li>
+        </ol>
+
+        <h4 style="margin-top:18px;">⚡ Stage 2 — Turn 1</h4>
+        <ol style="font-size:0.95em;line-height:1.6;">
+          <li><strong>Execute the audit's chosen move.</strong> No autopilot — even if your script says "Rain Dance + Electro Shot," the audit might say Light Screen.</li>
+          <li><strong>Don't click your default damage move</strong> (Electro Shot for your team) if any of: rain isn't secure / opp has redirection / opp benefits more from your rain / the target isn't the actual win condition.</li>
+        </ol>
+
+        <h4 style="margin-top:18px;">🔁 Stage 3 — Every turn (turns 2 onward)</h4>
+        <ol style="font-size:0.95em;line-height:1.6;">
+          <li><strong>Run the 3-question turn loop:</strong>
+            <ul>
+              <li>What is my win condition?</li>
+              <li>Does this turn's move <em>advance</em> it? (Not "does it look strong" — does it move me toward the WC?)</li>
+              <li>What is the opponent's intent this turn?</li>
+            </ul>
+          </li>
+          <li><strong>Name the board state out loud (mentally):</strong> Advantage / Neutral / Losing. Reads belong in Losing only.</li>
+          <li><strong>Re-check the commitment.</strong> Is the mon you committed to still the problem? If circumstances changed (e.g. their TR setter died, removing the Calyrex-Ice threat), update.</li>
+        </ol>
+
+        <h4 style="margin-top:18px;">📝 Stage 4 — Post-game (every game, ~30s + 5min for losses)</h4>
+        <ol style="font-size:0.95em;line-height:1.6;">
+          <li><strong>Log the game</strong> in the Log a game tab. Fill the 5 standard fields + the 5 Phase 2 tags.</li>
+          <li><strong>Be honest on tags:</strong> only check "threat checklist done" if you <em>actually</em> ran the sweep. Honest "no" data → actionable insight; dishonest "yes" → useless data.</li>
+          <li><strong>For losses:</strong> 5-min replay review using the 5-question framework (pivotal turn? suboptimal turns? right 4? lead matchup winnable? matchup itself losing?).</li>
+          <li><strong>For wins that felt wrong:</strong> review them too. Sloppy wins are flagged games.</li>
+        </ol>
+
+        <div class="section-intro" style="margin-top:16px;">
+          <strong>Stick rule:</strong> if you skip any of these steps for &gt;3 games in a row, you'll know — the corresponding Phase 2 tag will trend toward unchecked. The dashboard's "Top error types in losses" will calcify on Planning failures because your pre-T1 work is what prevents those.
+        </div>
+      </div>
+    </details>
+
     <details class="phase2-section" id="phase2-howto">
       <summary>📖 How Phase 2 works — quick reference</summary>
       <div class="section-body">
@@ -596,6 +762,6 @@ This is a free-form scratchpad — write whatever helps you understand the team.
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script src="app.js?v=11"></script>
+<script src="app.js?v=12"></script>
 </body>
 </html>

@@ -1843,8 +1843,9 @@
     const lines = [];
     lines.push(`# VGC Training Log — exported ${today}`);
     lines.push('');
-    lines.push('> A human/AI-readable summary of all games logged in the VGC training tool.');
+    lines.push(`> A human/AI-readable summary of all games logged in the VGC training tool. Schema v${SCHEMA_VERSION}.`);
     lines.push('> Drop this into ChatGPT, Claude, or Gemini and ask for analysis (suggested prompt at the bottom).');
+    lines.push('> If a `## Phase 2 progress` section is present below, the player is working through Phase 2 — see prompt Mode C for an audit-style review of that work.');
     lines.push('> Embedded battle logs are *not* included to keep this file small — see the JSON backup if you need them.');
     lines.push('');
 
