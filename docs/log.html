@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My Log — VGC Training</title>
-<link rel="stylesheet" href="style.css?v=9">
-<link rel="stylesheet" href="app.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="app.css?v=10">
 </head>
 <body>
 
@@ -151,7 +151,10 @@
         <p class="form-section-title">Post-game</p>
 
         <div class="form-field">
-          <label>Result</label>
+          <label>
+            Result
+            <span class="tip-icon" data-tooltip="Log every game — wins AND losses. Wolfe's process-over-outcome lens: a clean loss is a successful game, a sloppy win is a failed game. The error-types and Phase 2 tags below give you honest data either way.">i</span>
+          </label>
           <div class="radio-pills">
             <label class="radio-pill" data-group="result" data-value="W">
               <input type="radio" name="gf-result" value="W"> 🏆 Win
@@ -187,15 +190,18 @@
         </div>
 
         <div class="form-field">
-          <label>Error types <span style="color:var(--fg-muted);font-weight:400;">(select all that apply)</span></label>
+          <label>
+            Error types <span style="color:var(--fg-muted);font-weight:400;">(select all that apply)</span>
+            <span class="tip-icon" data-tooltip="Pick the cause(s) of any mistake you made — multi-select allowed since real games are often layered. Leave all unchecked if you played a clean game. Be honest even on wins: if you got bailed out by a crit, mark the actual error.">i</span>
+          </label>
           <div class="radio-pills" data-multi="true">
-            <label class="radio-pill" data-group="errorTypes" data-value="knowledge" title="Didn't know an interaction (move, ability, item, mechanic)">
+            <label class="radio-pill" data-group="errorTypes" data-value="knowledge" data-tooltip="Didn't know an interaction. Examples: didn't know their ability, didn't expect that item, surprised by a move's effect. Fix: more game exposure + meta study.">
               <input type="checkbox" name="gf-error" value="knowledge"> 📖 Knowledge
             </label>
-            <label class="radio-pill" data-group="errorTypes" data-value="positioning" title="Misplayed a known state (wrong target, bad switch, wrong Protect timing)">
+            <label class="radio-pill" data-group="errorTypes" data-value="positioning" data-tooltip="Misplayed a known state. Examples: targeted the wrong mon, bad switch timing, wrong Protect call. You knew the situation; you picked the wrong move. Fix: replay review + per-turn 3-question loop.">
               <input type="checkbox" name="gf-error" value="positioning"> 🎯 Positioning
             </label>
-            <label class="radio-pill" data-group="errorTypes" data-value="planning" title="No clear win condition; reactive play; lost the thread">
+            <label class="radio-pill" data-group="errorTypes" data-value="planning" data-tooltip="No clear win condition; reactive play; lost the thread. You went game-by-game without a plan, or your plan broke and you didn't have a fallback. Fix: pre-Turn-1 commitment habit + team preview ritual.">
               <input type="checkbox" name="gf-error" value="planning"> 🗺️ Planning
             </label>
           </div>
@@ -212,42 +218,54 @@
         <details class="phase2-tags-block" id="gf-phase2-tags">
           <summary>⚡ Phase 2 tags <span style="color:var(--fg-muted);font-weight:400;">(optional — for tracking the Phase 2 habits)</span></summary>
           <div class="phase2-tags-body">
+            <div class="hover-hint">💡 Hover the <span class="tip-icon">i</span> icons for an explanation of what each tag means.</div>
+
             <label class="compact-check">
               <input type="checkbox" id="gf-p2-threat-checklist">
               <span>Threat-type checklist done pre-Turn 1?</span>
+              <span class="tip-icon" data-tooltip="At team preview, mentally scan the opp's 6 against the 6 threat axes: (1) immediate damage, (2) setup scaling, (3) position disruption, (4) weather denial, (5) priority denial, (6) endgame wall. Check this if you actually ran the scan — not just glanced. Catches the Orthworm Iron Defense / Cloud Nine Drampa types before turn 1.">i</span>
             </label>
 
             <label class="compact-check">
               <input type="checkbox" id="gf-p2-support-audit">
-              <span>Support-mon first-move audit done? <em>(if Sableye dies T1, which move leaves best board?)</em></span>
+              <span>Support-mon first-move audit done?</span>
+              <span class="tip-icon" data-tooltip="Before clicking your support mon's T1 move, ask: 'If my support dies this turn, which move leaves me the best post-support board?' For Sableye+Archaludon, the AI's decision tree: Reflect into physical burst / Light Screen into special-Fairy spread / Rain Dance only if Archaludon fires immediately / Quash for one fast must-stop attacker (and check priority denial first). Check this if you actually ran the audit.">i</span>
             </label>
 
             <label class="compact-check">
               <input type="checkbox" id="gf-p2-1hp-used">
               <span>Used a low-HP mon strategically this game?</span>
+              <span class="tip-icon" data-tooltip="From the '1 HP > 0 HP' lesson. Did you deliberately keep a low-HP mon alive to re-trigger Intimidate, eat a hit, stall TR, redirect a target, or sacrifice it usefully? Check yes only if the low-HP usage was intentional — not if it just survived by accident or died with nothing accomplished.">i</span>
             </label>
             <div class="form-field" id="gf-p2-1hp-note-wrapper" style="display:none;margin:6px 0 12px 30px;">
               <textarea id="gf-p2-1hp-note" rows="2" placeholder="Brief note: how you used it"></textarea>
             </div>
 
             <div class="form-field" style="margin-top:14px;">
-              <label for="gf-p2-commitment">Single-sentence pre-Turn-1 commitment</label>
+              <label for="gf-p2-commitment">
+                Single-sentence pre-Turn-1 commitment
+                <span class="tip-icon" data-tooltip="Before turn 1, write: 'The Pokémon I must not allow free turns is ___ because ___.' Then play turns 1–3 around that sentence. The AI called this 'the single most actionable thing' — it forces you to identify the actual threat, not the flashy one. The missing-blanks for Phase 1 games were often Orthworm, Farigiraf, opposing Archaludon — not the obvious damage dealers.">i</span>
+              </label>
               <textarea id="gf-p2-commitment" rows="2" placeholder="The Pokémon I must not allow free turns is ___ because ___"></textarea>
             </div>
 
             <div class="form-field">
-              <label>Switch reasons that came up this game <span style="color:var(--fg-muted);font-weight:400;">(multi-select)</span></label>
+              <label>
+                Switch reasons that came up this game
+                <span style="color:var(--fg-muted);font-weight:400;">(multi-select)</span>
+                <span class="tip-icon" data-tooltip="Tag which categories actually fired this game. The Phase 2 checkpoint demands you can name all 4 reasons with an executed example of each — this builds the example bank automatically across your games.">i</span>
+              </label>
               <div class="radio-pills" data-multi="true">
-                <label class="radio-pill" data-group="switchReasons" data-value="survival" title="Avoided KO via switch">
+                <label class="radio-pill" data-group="switchReasons" data-value="survival" data-tooltip="Switched to avoid a KO. The classic survival switch.">
                   <input type="checkbox"> 🛟 Survival
                 </label>
-                <label class="radio-pill" data-group="switchReasons" data-value="positioning" title="Repositioned for next turn">
+                <label class="radio-pill" data-group="switchReasons" data-value="positioning" data-tooltip="Switched to be in a better spot next turn — set up a double-target, get the right mon facing the right threat, etc.">
                   <input type="checkbox"> 🎯 Positioning
                 </label>
-                <label class="radio-pill" data-group="switchReasons" data-value="field-condition" title="Switched to use TW/TR/weather window">
+                <label class="radio-pill" data-group="switchReasons" data-value="field-condition" data-tooltip="Switched to use a temporary window — bring in your speed-control abuser under their Tailwind, or your slow attacker under their Trick Room.">
                   <input type="checkbox"> 🌤️ Field condition
                 </label>
-                <label class="radio-pill" data-group="switchReasons" data-value="resource-preservation" title="Kept a closer alive for endgame">
+                <label class="radio-pill" data-group="switchReasons" data-value="resource-preservation" data-tooltip="Switched to keep a key mon alive for the endgame — your closer or your only answer to a back-line threat.">
                   <input type="checkbox"> 💎 Resource preservation
                 </label>
               </div>
@@ -364,6 +382,73 @@ This is a free-form scratchpad — write whatever helps you understand the team.
       <p style="font-size:0.92em;color:var(--fg-muted);">Reading + checkpoint are housekeeping. Prediction + replay drills are the work. Speed map + benchmarks live under <a href="#team" onclick="document.querySelector('[data-tab=team]').click();return false;">Current team</a> since they're team-reference data.</p>
     </div>
 
+    <div class="hover-hint">💡 Hover the <span class="tip-icon">i</span> icons throughout this page for short explanations of what each thing tracks.</div>
+
+    <details class="phase2-section" id="phase2-howto">
+      <summary>📖 How Phase 2 works — quick reference</summary>
+      <div class="section-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;">
+          <div>
+            <h4 style="margin:0 0 6px;color:var(--primary);">🔧 One-time setup (~90 min)</h4>
+            <ol style="margin:0;padding-left:18px;font-size:0.95em;">
+              <li><strong>Speed map</strong> — Team tab → ⚡ Speed map. ~30 min.</li>
+              <li><strong>Defensive benchmarks</strong> — Team tab → 🛡️ Benchmarks. ~45 min.</li>
+              <li><strong>Paste the AI's support-mon decision table</strong> into your team's reverse-engineering notes (Team tab).</li>
+              <li><strong>Start the reading list</strong> — knock out 1–2 of the 6 articles here.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 style="margin:0 0 6px;color:var(--primary);">🎮 Per ladder session</h4>
+            <ol style="margin:0;padding-left:18px;font-size:0.95em;">
+              <li><strong>5-min pre-session damage calc</strong> on Pikalytics — top 3 likely opp attackers vs your team.</li>
+              <li><strong>Play 2–3 games</strong>, stop after 3 consecutive losses.</li>
+              <li><strong>Per game: log + fill Phase 2 tags.</strong></li>
+              <li><strong>Per loss: 5-min replay review</strong> using the 5-question framework.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 style="margin:0 0 6px;color:var(--primary);">🧠 During every game (in-game habits)</h4>
+            <ol style="margin:0;padding-left:18px;font-size:0.95em;">
+              <li><strong>Pre-Turn-1 threat-type checklist</strong> — 6 axes.</li>
+              <li><strong>Support-mon first-move audit</strong>.</li>
+              <li><strong>No autopilot Electro Shot</strong> (or your team's equivalent default move).</li>
+              <li><strong>Single-sentence commitment</strong>: "The Pokémon I must not allow free turns is ___."</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 style="margin:0 0 6px;color:var(--primary);">📅 Weekly</h4>
+            <ol style="margin:0;padding-left:18px;font-size:0.95em;">
+              <li><strong>1 replay drill</strong> — pause a pro replay before each of 3 turns, predict, then watch.</li>
+              <li><strong>1–2 more readings</strong> until all 6 done.</li>
+              <li><strong>1 prediction drill</strong> when you do a hard-test game (5 sessions total across the phase).</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 style="margin:0 0 6px;color:var(--primary);">🔁 Every ~10 games</h4>
+            <ol style="margin:0;padding-left:18px;font-size:0.95em;">
+              <li>Dashboard → Backup & export → 📋 AI summary (.md)</li>
+              <li>Drop into ChatGPT/Claude/Gemini, ask for <strong>Mode A</strong> review.</li>
+              <li>Run <strong>Mode B</strong> on the most informative loss.</li>
+              <li>Paste the AI's upgraded lesson back into that game's lesson field.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 style="margin:0 0 6px;color:var(--primary);">✅ End of Phase 2 (only when ready)</h4>
+            <ol style="margin:0;padding-left:18px;font-size:0.95em;">
+              <li>Self-attest the <strong>6 checkpoint items</strong> below. Evidence required to pass.</li>
+              <li>Run <strong>Mode C</strong> on the AI — Phase 2 readiness audit.</li>
+              <li>If 4+ checkpoints honestly pass, advance to Phase 3.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </details>
+
     <details class="phase2-section" open>
       <summary>
         📚 Reading progress
@@ -445,6 +530,6 @@ This is a free-form scratchpad — write whatever helps you understand the team.
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script src="app.js?v=9"></script>
+<script src="app.js?v=10"></script>
 </body>
 </html>

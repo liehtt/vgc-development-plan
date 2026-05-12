@@ -695,6 +695,102 @@ a.inline-log-btn:hover,
   box-shadow: var(--shadow);
 }
 
+/* ===== Tooltip system =====
+   Generic data-tooltip attribute → on-hover styled tooltip.
+   Used for tag explanations, dashboard card metrics, table headers, etc.
+   Works on any element. Tooltip text comes from the data-tooltip attribute. */
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  background: #1a1a1a;
+  color: #f5f5f3;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  width: max-content;
+  max-width: 360px;
+  white-space: pre-wrap;
+  text-transform: none;
+  letter-spacing: 0;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.15s, transform 0.15s, visibility 0s linear 0.15s;
+  z-index: 200;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after,
+[data-tooltip]:focus-within::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.15s, transform 0.15s, visibility 0s;
+}
+/* Right-anchored tooltips for elements near the right edge */
+[data-tooltip][data-tooltip-pos="right"]::after {
+  left: auto;
+  right: 0;
+}
+[data-tooltip][data-tooltip-pos="below"]::after {
+  bottom: auto;
+  top: calc(100% + 10px);
+  transform: translateY(-4px);
+}
+[data-tooltip][data-tooltip-pos="below"]:hover::after,
+[data-tooltip][data-tooltip-pos="below"]:focus-within::after {
+  transform: translateY(0);
+}
+
+/* Small info icon used inline next to labels */
+.tip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--fg-muted);
+  font-size: 11px;
+  font-weight: 700;
+  margin-left: 6px;
+  cursor: help;
+  font-style: normal;
+  vertical-align: middle;
+  user-select: none;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.tip-icon:hover {
+  background: var(--accent-soft);
+  color: var(--primary);
+  border-color: var(--accent);
+}
+
+/* "Hover for help" hint strip */
+.hover-hint {
+  background: var(--secondary-soft);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 0.88em;
+  color: var(--fg);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* ===== Phase 2 ===== */
 
 /* Phase 2 section accordions (used in Drills tab and Team tab extensions) */

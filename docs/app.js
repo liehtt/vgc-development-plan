@@ -1144,11 +1144,11 @@
       }
       const header = `
         <div class="speedmap-row">
-          <div>Mon</div>
-          <div>Base spd</div>
-          <div>Outspeeds (+0)</div>
-          <div>Outspeeds (under control)</div>
-          <div>Outspeed by</div>
+          <div data-tooltip="Pokémon name. Auto-fills from your team if you use the 'Fill from team' button.">Mon <span class="tip-icon">i</span></div>
+          <div data-tooltip="Base speed stat at level 50, IVs maxed, neutral nature. Look it up on Serebii/Pikalytics.">Base spd <span class="tip-icon">i</span></div>
+          <div data-tooltip="Common meta Pokémon this mon outspeeds at neutral speed (no Tailwind, no Scarf). Free-form — list the actual names you see often.">Outspeeds (+0) <span class="tip-icon">i</span></div>
+          <div data-tooltip="What this mon outspeeds when your team's speed control is up: Tailwind (×2), Trick Room (reversed), Choice Scarf (×1.5), Quash. Different speed-control modes can be listed separately.">Outspeeds (under control) <span class="tip-icon">i</span></div>
+          <div data-tooltip="What common meta mons outspeed THIS mon. At +0 OR under their Tailwind / Scarf / etc. The threat-identification axis: knowing what you can't outpace is more important than knowing what you can.">Outspeed by <span class="tip-icon">i</span></div>
           <div></div>
         </div>
       `;
@@ -1255,13 +1255,13 @@
         const threats = b.vsThreats || [];
         const threatHeader = `
           <div class="benchmark-attacker-row">
-            <div>Attacker</div>
-            <div>Move</div>
-            <div>Damage%</div>
-            <div>@100%</div>
-            <div>@75%</div>
-            <div>@50%</div>
-            <div>Fix if fails</div>
+            <div data-tooltip="Opposing Pokémon you're benchmarking against. Pick the top 3-5 meta attackers your team will actually face.">Attacker <span class="tip-icon">i</span></div>
+            <div data-tooltip="Their most threatening move against this defensive mon. If they have multiple dangerous moves, add a row per move.">Move <span class="tip-icon">i</span></div>
+            <div data-tooltip="Damage range from Pikalytics calc, like '44-52%'. Use the calc — don't guess.">Damage% <span class="tip-icon">i</span></div>
+            <div data-tooltip="Does this mon survive that attacker's strongest hit at 100% HP? Click to toggle ✓/✗.">@100% <span class="tip-icon">i</span></div>
+            <div data-tooltip="Does it survive at 75% HP? Important because by mid-game your mon is rarely at full.">@75% <span class="tip-icon">i</span></div>
+            <div data-tooltip="Does it survive at 50% HP? The 'is this mon still useful late-game' threshold.">@50% <span class="tip-icon">i</span></div>
+            <div data-tooltip="What item / EV / type change would push 'barely dies' into 'lives one hit'? Notes go here, e.g. '+12 SpD' or 'Tera Steel saves it'.">Fix if fails <span class="tip-icon">i</span></div>
             <div></div>
           </div>
         `;
@@ -1640,21 +1640,22 @@
       );
       card.classList.toggle('ready', ready);
 
-      const item = (label, val, total, doneAt) => {
+      const item = (label, val, total, tooltip) => {
         const isDone = total ? val >= total : val > 0;
         const valStr = total ? `${val} / ${total}` : `${val}`;
-        return `<li><span class="label">${label}</span><span class="value ${isDone ? 'done' : ''}">${valStr}${isDone ? ' ✓' : ''}</span></li>`;
+        const tipAttr = tooltip ? ` data-tooltip="${escapeHtml(tooltip)}"` : '';
+        return `<li><span class="label"${tipAttr}>${label} <span class="tip-icon">i</span></span><span class="value ${isDone ? 'done' : ''}">${valStr}${isDone ? ' ✓' : ''}</span></li>`;
       };
 
       card.innerHTML = `
         <h3>Phase 2 progress${ready ? ' — ready for Phase 3 ✅' : ''}</h3>
         <ul class="phase2-progress-list">
-          ${item('Reading', reading, PHASE2_READING.length)}
-          ${item('Speed map', speedMapped, teamCount)}
-          ${item('Benchmarks', benchmarked, 3)}
-          ${item('Prediction drills (pass)', predPassed, 3)}
-          ${item('Replay drills this week', replayWeek, 1)}
-          ${item('Checkpoint verified', checkpointPassed, 4)}
+          ${item('Reading', reading, PHASE2_READING.length, '6 Phase 2 articles to read. Mark off as you finish in Drills tab → Reading progress. Notes textarea per article for what stuck.')}
+          ${item('Speed map', speedMapped, teamCount, 'Per-mon table of base speed + what each mon outspeeds + what outspeeds it. Fill once per team in Team tab → ⚡ Speed map. ~30 min exercise.')}
+          ${item('Benchmarks', benchmarked, 3, 'Per-defensive-mon table: top meta attackers + damage% + does it survive at full/75/50% HP. Fill once per team in Team tab → 🛡️ Defensive benchmarks. Target: at least 3 mons. ~45 min exercise.')}
+          ${item('Prediction drills (pass)', predPassed, 3, 'Phase 2 hard test: log 5 sessions where you predict the opponent\'s move + damage per turn. A session passes if ≥1 turn was fully right (move AND damage). Need 3 of 5 sessions passing to clear the checkpoint.')}
+          ${item('Replay drills this week', replayWeek, 1, 'Weekly 15-min drill: pause a pro replay before each turn, write what you would do, watch what the player did + caster\'s reasoning. Log in Drills tab → 📺 Replay drill log.')}
+          ${item('Checkpoint verified', checkpointPassed, 4, '6 self-attest checkpoint items. Evidence textarea required to mark "passed" — forces actual articulation. Need 4 of 6 passed to advance to Phase 3.')}
         </ul>
         <button class="btn-secondary" data-action="goto-drills">Open Drills →</button>
       `;
