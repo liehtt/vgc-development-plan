@@ -65,7 +65,7 @@ Goal: set up the environment + adopt the right baseline mindset before you press
 
 **Do:**
 
-1. Make a Pokémon Showdown account. Find the current VGC ladder (will be named after the current format, e.g. "VGC 2026 Reg X").
+1. Make a Pokémon Showdown account. Find the current VGC ladder (its name encodes the current format and regulation series — the active one whenever you're reading this).
 2. **Don't ladder yet.** Watch 2–3 recent VGC tournament finals on YouTube (search "VGC [current year] regional finals"). Don't try to understand. Just watch health bars, KO counts, and the announcer's analysis flowing past you.
 3. Read these vgcguide.com pages, in this order:
    - [Preface](https://www.vgcguide.com/preface) — sets expectations.
@@ -201,7 +201,7 @@ Goal: stop reacting, start anticipating. By the end of this phase, you should be
 
 5. **Run drill-style sessions** in addition to ladder games. Once a week, instead of laddering, do this:
 
-   - Pick a tournament replay (VGC 2024+ on YouTube — many casters do "VGC analysis" content). Pause **before each turn** and write down what you'd do, then watch what the player did and *why the caster says it was right or wrong*.
+   - Pick a recent VGC regional or international final on YouTube (many casters do "VGC analysis" content). Pause **before each turn** and write down what you'd do, then watch what the player did and *why the caster says it was right or wrong*.
    - Do this for 3 turns of one game per drill session. That's it. 15 minutes.
 
    This builds the "what should I have done" muscle that ladder play alone won't teach you, because on ladder you don't get an explanation.
@@ -234,9 +234,9 @@ If you can't honestly check 4 of 6, loop. Don't ladder more — *review* more. T
 
 ---
 
-## Phase 3 — Team preview + positioning + Tera discipline (4–6 weeks)
+## Phase 3 — Team preview + positioning + resource discipline (4–6 weeks)
 
-Goal: turn the 90-second team preview window from a vibes check into a structured analysis. By this phase's end you should be writing a 3-sentence game plan in your head before turn 1, and most of the time it should still be relevant by turn 5. You'll also start treating Tera as a *resource* with rules, not a panic button.
+Goal: turn the 90-second team preview window from a vibes check into a structured analysis. By this phase's end you should be writing a 3-sentence game plan in your head before turn 1, and most of the time it should still be relevant by turn 5. You'll also start treating the format's once-per-battle resource mechanic (whatever the current regulation provides) as a *resource* with rules, not a panic button.
 
 **Do:**
 
@@ -275,23 +275,26 @@ Goal: turn the 90-second team preview window from a vibes check into a structure
 
    When *you* are forced, accept it and play the optimal forced line. When *they* are forced, you can predict with very high confidence — this is the cleanest read in doubles.
 
-6. **Tera discipline (current Gen 9 mechanic).** Terastallization is once-per-game; treat it like a saved item. Before every game, decide what your Tera intent is. Every Tera press should be classifiable as one of:
+6. **Once-per-battle resource discipline (format-dependent mechanic).** Most VGC regulations include a marquee high-leverage decision the player gets to fire once per battle — the specific mechanic varies by generation and regulation series. Whatever your current format provides, treat each use like a saved item. Every use should be classifiable as one of three intents:
 
-   | Type | Purpose | Example |
+   | Intent | Purpose | Heuristic |
    |---|---|---|
-   | **Offensive** | Secure a KO that wouldn't happen otherwise | Tera-Fairy on Garchomp into a setup'd Dragon-Dance Roaring Moon |
-   | **Defensive** | Survive an otherwise-lethal hit | Tera-Steel on Iron Hands to flip the matchup vs Flutter Mane |
-   | **Tempo** | Flip the board's pressure dynamic (resist a STAB, redirect targeting, enable speed) | Tera-Water on Garchomp into rain to flip switch incentives |
+   | **Offensive** | Secure a KO that wouldn't happen otherwise | If pressing it converts a clean 2HKO into an OHKO on a mon you must remove this turn, fire. |
+   | **Defensive** | Survive an otherwise-lethal hit | If your win condition fails without this mon alive on the next turn, fire to live. |
+   | **Tempo** | Flip the board's pressure dynamic | Resist an incoming STAB type, redirect targeting math, swap a speed tier, or otherwise change the matchup — flip the dynamic, not just take a hit. |
 
-   **Post-game Tera audit (after every game you Tera'd in):** ask
-   - Did the Tera contribute to the *win condition* or just feel cool?
-   - Was it **too early** (panic — used before threat materialized)?
+   **Post-game resource audit (after every game you used it in):** ask
+   - Did the use contribute to the *win condition*, or just feel cool?
+   - Was it **too early** (panic — used before the threat actually materialized)?
    - **Too late** (greed — saved past the moment it would've mattered)?
-   - **Misused** (right type, wrong target — Tera'd the mon that wasn't going to convert)?
+   - **Misused** (right intent, wrong target — fired on the mon that wasn't going to convert)?
 
-   Common failure modes: **Tera-greed** (saving for "later" until the game ends without using it), **panic-Tera** (firing on turn 2 because you got scared), **win-more Tera** (Tera-ing while already winning — you spent the resource for nothing).
+   Common failure modes (independent of which mechanic the current format uses):
+   - **Greed** — saving for "later" until the game ends with the resource unused.
+   - **Panic** — firing turn 2 because you got scared, before the actual threat appeared.
+   - **Win-more** — pressing it while you're already winning. Spent the resource for nothing.
 
-   Note: this framework generalizes to any future "big resource decision" mechanic — Mega Evolution, Z-moves, Dynamax all worked the same way. The mechanic name will change; the discipline doesn't.
+   This framework holds across generations. Past formats have included once-per-battle mechanics with different names; future formats will too. The intent classification + post-game audit + failure-mode taxonomy stay useful regardless of what the mechanic is called this year.
 
 7. **Replay analysis becomes the priority practice**, not laddering. Spend 50% of your VGC time watching pro replays and pausing before turns to predict, and 50% playing. Pros are: PokéStats Live, Wolfe Glick, Aaron Zheng, Cybertron, etc. on YouTube. (See "External resources" at the bottom of this doc for a curated list.)
 
@@ -304,7 +307,7 @@ Goal: turn the 90-second team preview window from a vibes check into a structure
 - [ ] **Loss diagnostic without RNG-blame.** Pick your 3 most recent losses. For each, name the cause without using "I got unlucky" or "they crit." If you genuinely can't, re-read [Competitive Pokémon is less luck than you think](https://www.vgcguide.com/competitive-pokemon-is-less-luck-than-you-think) before continuing.
 - [ ] **Bo1 instinct:** in your team-preview routine, are you biasing toward risk-averse leads and tempo plays, vs. calculated reads? *(Expected for ladder: yes — Bo1 punishes reads, rewards consistency and tempo.)*
 - [ ] **Hard test — find the losing turn.** Pick a recent loss replay. Identify the *exact* turn where the game became unwinnable (not "where I lost", but the last turn where I had a winning line). Then write out the corrected sequence: the move set you should have made on that turn. If you can't, you don't yet see board state — more replay drills.
-- [ ] **Tera audit — for your last 5 Tera presses**: classify each as Offensive / Defensive / Tempo. Then mark each as "good", "too early", "too late", or "misused" by the post-game audit questions. Pass = ≥3/5 "good" + you can name *why* the bad ones were bad.
+- [ ] **Resource audit — for your last 5 uses of the format's once-per-battle mechanic**: classify each as Offensive / Defensive / Tempo, then mark each as "good", "too early", "too late", or "misused" using the audit questions above. Pass = ≥3/5 "good" + you can name *why* the bad ones were bad.
 - [ ] **Ladder rating reality check:** where are you sitting? At this point, 1100–1300 is normal-and-fine. If you're already 1300+ on ladder with this much review work, you're tracking ahead of schedule.
 
 ---
@@ -419,7 +422,7 @@ Goal: make this a stable habit instead of a project.
 | **Mechanical** | Knowledge gaps fixed | No major surprises — moves/items/abilities are familiar. Damage estimation within ~15% of calc. |
 | **Strategic** | Win-condition discipline | You enter games with a plan; the plan is usually still relevant by mid-game. Position > Damage is a habit, not a slogan. |
 | **Adaptive** | Loss diagnosis | When you lose, your first reaction is the replay, not RNG-blame. You can name *which* error type (Knowledge / Positioning / Planning) caused each loss. |
-| **Resource** | Tera intentionality | For your last 5 Tera presses, you can name intent (Off / Def / Tempo) and audit (good / early / late / misused). |
+| **Resource** | Once-per-battle resource intentionality | For your last 5 uses of the format's marquee resource, you can name intent (Off / Def / Tempo) and audit (good / early / late / misused). |
 | **Mental** | Habit stability | You can take a week off and resume cleanly. You stop after 3 consecutive losses without exception. |
 
 When all five are true at **1400–1600 ELO on a self-built team**, you've hit the ceiling this plan was designed to reach.
@@ -444,7 +447,7 @@ Whichever bucket holds the most losses is your bottleneck. **More games will not
 
 A second principle from Brady Smith that overlaps with vgcguide.com but is worth restating because it's *the* most common plateau cause: **avoid results-based analysis.** A play that worked isn't automatically right — you might have made a bad play and got lucky. Plateau-breaking comes from evaluating decision *quality*, not outcome.
 
-A complementary lens from Markus Stadter (3rd at 2016 Worlds, multi-time regional champion): collaborative refinement beats solo grinding. In his Bochum Regional winning report he describes spending substantial time *with friends* (Wolfe Glick and Aaron Traylor among them) "to finalize the game plans, EV spreads, moves and Tera Types" ([source](https://victoryroad.pro/2023/03/13/markus-stadter-bochum-report/)). For a hobbyist this means: when stuck, post a recent loss replay to the [r/VGC subreddit](https://www.reddit.com/r/VGC/) or [VGC Discord servers](https://www.reddit.com/r/VGC/) and ask for one specific question ("did I play turn 6 right?"). One outside opinion from someone who isn't you is often the unblock.
+A complementary lens from Markus Stadter (3rd at 2016 Worlds, multi-time regional champion): collaborative refinement beats solo grinding. In his Bochum Regional winning report he describes spending substantial time *with friends* (Wolfe Glick and Aaron Traylor among them) finalizing game plans, EV spreads, moves, and per-mon format-specific tuning ([source](https://victoryroad.pro/2023/03/13/markus-stadter-bochum-report/)). For a hobbyist this means: when stuck, post a recent loss replay to the [r/VGC subreddit](https://www.reddit.com/r/VGC/) or [VGC Discord servers](https://www.reddit.com/r/VGC/) and ask for one specific question ("did I play turn 6 right?"). One outside opinion from someone who isn't you is often the unblock.
 
 ---
 
@@ -473,7 +476,7 @@ That's ~30 minutes/week of overhead beyond actually playing. Worth it.
 - **Chasing rating instead of understanding** — rating without understanding is a sandcastle. The next format reset washes it. Understanding compounds.
 - **Excessive Protect ("Protect Extravaganza")** — if you Protect twice in a row and the board state hasn't changed, you wasted a turn. Reread /protect-in-battle.
 - **6th Pokémon syndrome** — cycling the last slot endlessly. Almost always a structural problem in the other 5, not a "missing piece."
-- **Tera-greed / panic-Tera / win-more Tera** — three flavors of using your Gen 9 resource wrong. Audit every Tera press.
+- **Resource-greed / panic-use / win-more** — three flavors of misusing the format's once-per-battle resource. Audit every press, regardless of which mechanic the current regulation uses.
 - **Two-variable swaps** — changing two things between test sessions. Now your data is contaminated. One variable, ten games, decide.
 - **Trying to memorize Pikalytics** — usage stats are descriptive, not prescriptive. They tell you what's common, not what's good for you.
 
@@ -493,7 +496,7 @@ That's ~30 minutes/week of overhead beyond actually playing. Worth it.
 | Feel pressured / out of options every turn | [/what-is-pressure](https://www.vgcguide.com/what-is-pressure) |
 | Can't predict opponents | [/predictions](https://www.vgcguide.com/predictions) + [/building-up-a-knowledge-base](https://www.vgcguide.com/building-up-a-knowledge-base) |
 | Can't explain your own team to anyone | [/intent](https://www.vgcguide.com/intent) |
-| Tera misuse | (no page exists; use the audit framework in Phase 3) |
+| Once-per-battle resource misuse | (no source article; use the audit framework in Phase 3) |
 | Iterating teams without progress | [/when-do-you-move-on-from-a-team](https://www.vgcguide.com/when-do-you-move-on-from-a-team) → [`pages/when-do-you-move-on-from-a-team.md`](pages/when-do-you-move-on-from-a-team.md) |
 
 ---
@@ -532,7 +535,7 @@ These are the resources that came up repeatedly across pro tournament reports an
 - **[Pikalytics damage calculator](https://pikalytics.com/calc)** — for the calc-as-habit workflow (Phase 2). Pre-set with current format defaults.
 - **[VGC Multi Calc](https://vgcmulticalc.com/)** — calc against multiple defenders simultaneously. Essential for spread moves.
 - **[Showdown's calculator](https://calc.pokemonshowdown.com/)** — full-feature classic calc.
-- **[Porygon Labs](https://www.porygonlabs.com/)** — current-format calc + team builder, with Mega Evolution / Stat Points support.
+- **[Porygon Labs](https://www.porygonlabs.com/)** — current-format calc + team builder.
 - **[Victory Road](https://victoryroadvgc.com)** — tournament results database. Check Top 8 weekly for archetype shifts.
 - **[Limitless VGC](https://limitlessvgc.com/)** — alternative tournament database with player profiles.
 - **[Pokémon Showdown](https://play.pokemonshowdown.com/)** — the ladder itself.
