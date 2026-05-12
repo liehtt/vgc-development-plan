@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My Log — VGC Training</title>
-<link rel="stylesheet" href="style.css?v=8">
-<link rel="stylesheet" href="app.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="app.css?v=9">
 </head>
 <body>
 
@@ -53,6 +53,7 @@
     <button class="tab-button active" data-tab="dashboard" role="tab">🏠 Dashboard</button>
     <button class="tab-button" data-tab="log-game" role="tab">+ Log a game</button>
     <button class="tab-button" data-tab="team" role="tab">🛡️ Current team</button>
+    <button class="tab-button" data-tab="drills" role="tab">🎯 Drills (Phase 2)</button>
   </div>
 
   <!-- ============ Tab: Dashboard ============ -->
@@ -72,6 +73,7 @@
       <div class="stat-card" id="dash-errors"></div>
       <div class="stat-card" id="dash-tilt"></div>
       <div class="stat-card backup-card" id="dash-backup"></div>
+      <div class="stat-card phase2-card" id="dash-phase2"></div>
     </div>
 
     <section id="recent-games-section" style="display:none;">
@@ -205,6 +207,53 @@
           <textarea id="gf-lesson" rows="6" placeholder="e.g. Always pre-decide the TR-up branch before turn 1.&#10;&#10;Paste your AI-refined version here any time — line breaks and paragraphs are preserved."></textarea>
           <div class="char-counter" id="gf-lesson-counter">0 chars</div>
         </div>
+
+        <!-- Phase 2 tags (optional, collapsed by default) -->
+        <details class="phase2-tags-block" id="gf-phase2-tags">
+          <summary>⚡ Phase 2 tags <span style="color:var(--fg-muted);font-weight:400;">(optional — for tracking the Phase 2 habits)</span></summary>
+          <div class="phase2-tags-body">
+            <label class="compact-check">
+              <input type="checkbox" id="gf-p2-threat-checklist">
+              <span>Threat-type checklist done pre-Turn 1?</span>
+            </label>
+
+            <label class="compact-check">
+              <input type="checkbox" id="gf-p2-support-audit">
+              <span>Support-mon first-move audit done? <em>(if Sableye dies T1, which move leaves best board?)</em></span>
+            </label>
+
+            <label class="compact-check">
+              <input type="checkbox" id="gf-p2-1hp-used">
+              <span>Used a low-HP mon strategically this game?</span>
+            </label>
+            <div class="form-field" id="gf-p2-1hp-note-wrapper" style="display:none;margin:6px 0 12px 30px;">
+              <textarea id="gf-p2-1hp-note" rows="2" placeholder="Brief note: how you used it"></textarea>
+            </div>
+
+            <div class="form-field" style="margin-top:14px;">
+              <label for="gf-p2-commitment">Single-sentence pre-Turn-1 commitment</label>
+              <textarea id="gf-p2-commitment" rows="2" placeholder="The Pokémon I must not allow free turns is ___ because ___"></textarea>
+            </div>
+
+            <div class="form-field">
+              <label>Switch reasons that came up this game <span style="color:var(--fg-muted);font-weight:400;">(multi-select)</span></label>
+              <div class="radio-pills" data-multi="true">
+                <label class="radio-pill" data-group="switchReasons" data-value="survival" title="Avoided KO via switch">
+                  <input type="checkbox"> 🛟 Survival
+                </label>
+                <label class="radio-pill" data-group="switchReasons" data-value="positioning" title="Repositioned for next turn">
+                  <input type="checkbox"> 🎯 Positioning
+                </label>
+                <label class="radio-pill" data-group="switchReasons" data-value="field-condition" title="Switched to use TW/TR/weather window">
+                  <input type="checkbox"> 🌤️ Field condition
+                </label>
+                <label class="radio-pill" data-group="switchReasons" data-value="resource-preservation" title="Kept a closer alive for endgame">
+                  <input type="checkbox"> 💎 Resource preservation
+                </label>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="form-actions">
@@ -267,6 +316,117 @@ This is a free-form scratchpad — write whatever helps you understand the team.
         <button class="btn-big-primary" id="tf-save">💾 Save team</button>
       </div>
     </form>
+
+    <!-- Phase 2: Speed map accordion -->
+    <details class="phase2-section" id="tf-speedmap-section">
+      <summary>
+        ⚡ Speed map
+        <span class="section-badge" id="speedmap-badge">0 / 6 mapped</span>
+      </summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>Phase 2 deliverable.</strong> Per mon: list its base speed + what it outspeeds at +0 + under your speed control + what outspeeds it.
+          Building this once pays back over hundreds of games — preview-level threat identification becomes faster than turn-4 discovery.
+        </div>
+        <div id="speedmap-editor"></div>
+        <div class="form-actions" style="margin-top:14px;">
+          <button class="btn-secondary" type="button" data-action="speedmap-fill-from-team">+ Fill rows from current team</button>
+          <button class="btn-secondary" type="button" data-action="speedmap-add-row">+ Add custom row</button>
+        </div>
+      </div>
+    </details>
+
+    <!-- Phase 2: Defensive benchmarks accordion -->
+    <details class="phase2-section" id="tf-benchmarks-section">
+      <summary>
+        🛡️ Defensive benchmarks
+        <span class="section-badge" id="benchmarks-badge">0 mons benchmarked</span>
+      </summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>Phase 2 deliverable.</strong> Per defensive mon: list the top meta attackers, the damage they do, and whether you survive at full / 75% / 50% HP.
+          Reframes "can I KO?" into "what can I afford to eat?" — the actual question that wins games.
+        </div>
+        <div id="benchmarks-editor"></div>
+        <div class="form-actions" style="margin-top:14px;">
+          <button class="btn-secondary" type="button" data-action="benchmark-add-mon">+ Add defensive mon</button>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ Tab: Drills (Phase 2) ============ -->
+  <section class="tab-panel" data-tab="drills" role="tabpanel">
+
+    <div class="drills-intro">
+      <h2>🎯 Phase 2 drills</h2>
+      <p>Phase 2 of the training plan is the <em>anticipation</em> layer — building reference data (speed map, benchmarks) and drill habits (prediction, replay-watching) that fix the "I default into my familiar script" plateau.</p>
+      <p style="font-size:0.92em;color:var(--fg-muted);">Reading + checkpoint are housekeeping. Prediction + replay drills are the work. Speed map + benchmarks live under <a href="#team" onclick="document.querySelector('[data-tab=team]').click();return false;">Current team</a> since they're team-reference data.</p>
+    </div>
+
+    <details class="phase2-section" open>
+      <summary>
+        📚 Reading progress
+        <span class="section-badge" id="reading-badge">0 / 6 read</span>
+      </summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>Phase 2 reading list.</strong> Mark each off as you finish. Optional notes for what stuck.
+          <button class="btn-secondary" type="button" data-action="reading-mark-all" style="margin-left:8px;float:right;">Mark all read</button>
+        </div>
+        <ul class="reading-list" id="reading-list"></ul>
+      </div>
+    </details>
+
+    <details class="phase2-section">
+      <summary>
+        🎯 Mid-game prediction drill
+        <span class="section-badge" id="prediction-badge">0 sessions</span>
+      </summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>Phase 2 hard test.</strong> Per turn, predict the opp's move + expected damage range. After the turn: was the prediction right?
+          Pass criterion: ≥3 of 5 ladder games where you correctly predicted at least one turn.
+        </div>
+        <div id="prediction-drills-list"></div>
+        <div class="form-actions" style="margin-top:14px;">
+          <button class="btn-secondary" type="button" data-action="new-prediction-drill">+ New prediction session</button>
+        </div>
+      </div>
+    </details>
+
+    <details class="phase2-section">
+      <summary>
+        📺 Replay drill log
+        <span class="section-badge" id="replay-badge">0 drills</span>
+      </summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>Weekly drill.</strong> Pick a pro replay, pause before each turn, write what you'd do, then watch + listen to the caster.
+          3 turns of one replay per session is plenty (~15 min).
+        </div>
+        <div id="replay-drills-list"></div>
+        <div class="form-actions" style="margin-top:14px;">
+          <button class="btn-secondary" type="button" data-action="new-replay-drill">+ Log replay drill</button>
+        </div>
+      </div>
+    </details>
+
+    <details class="phase2-section">
+      <summary>
+        ✅ Phase 2 checkpoint
+        <span class="section-badge" id="checkpoint-badge">0 / 6 verified</span>
+      </summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>Self-attestation gate to Phase 3.</strong> Mark "passed" only when you can demonstrate the skill — evidence textarea is required.
+          You need 4 of 6 to advance to Phase 3.
+        </div>
+        <div id="checkpoint-summary"></div>
+        <ul class="checkpoint-list" id="checkpoint-list"></ul>
+      </div>
+    </details>
+
   </section>
 
 </main>
@@ -285,6 +445,6 @@ This is a free-form scratchpad — write whatever helps you understand the team.
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>
