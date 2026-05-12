@@ -2115,6 +2115,8 @@ DATA SHAPE OF THIS LOG
 - errorTypes is a list — a single game can be tagged with multiple types simultaneously (Knowledge AND Positioning, etc.). Empty list = clean game.
 - WC and Lesson can be multi-paragraph (block-quoted). Some are AI-refined from earlier sessions.
 - Some games have a Showdown replay URL or "Embedded log: present" note. If embedded logs are included, they're in Showdown protocol format ("|move|...", "|-damage|...", "|-status|...", "|switch|...") — read them line by line and cite turn numbers.
+- **Phase 2 tags (when present)**: a sub-block per game showing which Phase 2 in-game habits the player ran for that game. Possible flags: "Threat-type checklist done" (the player swept opp's 6 against the 6 threat axes pre-T1), "Support-mon first-move audit done" (the player chose T1 move based on "if support dies T1, what leaves the best board?"), "Used a low-HP mon strategically" with optional note, "Pre-T1 commitment" (a sentence: 'The Pokémon I must not allow free turns is ___ because ___'), and "Switch reasons triggered" (categories: survival / positioning / field-condition / resource-preservation). Phase 2 tags absent on older games. **Tag presence/absence is signal**: skipped habits often correlate with errors of the matching type — use this correlation in your analysis.
+- If a "## Phase 2 progress" section is present at the bottom, the player is working through Phase 2 of the training plan (speed map, defensive benchmarks, drill habits, checkpoint). When this is the focus of the question, use MODE C.
 
 ============================================================
 CHOOSE YOUR MODE BASED ON WHAT I ASK
@@ -2148,6 +2150,7 @@ Audit the current team via Core / Solvers / Enablers:
 - Are my stated WCs reachable from the leads I picked, or aspirational?
 - Patterns where my opp-WC guess was wrong in the same direction (consistent direction = a Knowledge gap to close).
 - Lead matchups I systematically lose. Name specific lead pairs.
+- **If Phase 2 tags are present**: read the player's "Pre-T1 commitment" sentences across games. Are the commitments getting more specific over time, or stuck in vague patterns? Are the WHYs actionable, or just naming a flashy threat? A commitment like "Orthworm because Iron Defense + Body Press" is actionable; "Calyrex-S because it's strong" is not.
 
 ### 4. TURN-LEVEL EXECUTION PATTERNS (where battle logs are present)
 Look across games for repeating turn-level mistakes:
@@ -2156,9 +2159,18 @@ Look across games for repeating turn-level mistakes:
 - Resource-mechanic uses — intent + audit per press, by turn number (use generic phrasing as instructed above)
 - Switching errors (stayed when should have switched, or vice versa)
 - When confident, prescribe the BETTER MOVE at the specific game/turn. Mark each [CONFIDENT] or [SPECULATION].
+- **If Phase 2 tags are present**: cross-reference "Support-mon first-move audit done" with the actual T1 move played (from the embedded log when available). If audit-done = true but the T1 move doesn't match the audit's decision tree, that's tag-discipline-without-skill-translation — flag it. Also check "Switch reasons triggered" — if only "survival" appears across games, the player isn't switching for positioning / field-condition / resource-preservation, which suggests they don't fully understand the 4-reason framework yet.
 
-### 5. PRESCRIPTION (close with this)
-- **Top 3 habits to drill** before the next 10 games, ranked by impact.
+### 5. PHASE 2 HABIT ADHERENCE (only if Phase 2 tags are present in 3+ games)
+Strongest analytical signal: correlate tag adherence with error types.
+- How often is "Threat-type checklist done" checked? Trend over time — is the habit sticking, or are recent games less tagged than early ones (= habit fading)?
+- **Critical correlation #1**: do **Planning failures** cluster in games where "Threat-type checklist done" is unchecked? If yes, the planning failures aren't from lack of strategic vocabulary — they're from skipping the pre-T1 scan. Prescription: focus on actually running the threat sweep, not on reading more Phase 2 articles.
+- **Critical correlation #2**: do **Positioning errors** cluster in games where "Support-mon first-move audit done" is unchecked? If yes, the positioning errors trace back to picking a default T1 move instead of running the audit.
+- **Critical correlation #3**: is "Used a low-HP mon strategically" rarely checked? That suggests the "1 HP > 0 HP" lesson hasn't landed yet — the player is binning low-HP mons reflexively.
+- **Commitment-WHY quality check**: scan all commitment sentences. Do the WHYs actually tell you what move to click, or are they just identifying threats? Vague WHYs ("because it's strong", "because it's dangerous") = the player hasn't yet internalized the WHY-drives-action discipline.
+
+### 6. PRESCRIPTION (close with this)
+- **Top 3 habits to drill** before the next 10 games, ranked by impact. Prioritize based on §5 — the Phase 2 habit with the strongest correlation to errors is the #1 drill target.
 - **One specific knowledge gap** to close this week (specific mon / move / item / interaction).
 - **One mental or process change** (tilt patterns, results-based reasoning, autopilot, etc.).
 - **The single most actionable thing** if I did nothing else.
@@ -2169,13 +2181,26 @@ MODE B — SINGLE-GAME DEEP DIVE (one game, granular)
 
 When I want one game scrutinized, produce a thorough breakdown — aim for at least 3–5x the depth of a Mode A turn-level pass. Spend more tokens here. The point is to extract maximum learning from the single game.
 
-Produce this exact 7-section breakdown:
+Produce this exact 8-section breakdown:
 
 ### 1. PRE-GAME AUDIT
 - Did my stated WC actually fit the opponent's team composition? If not, what was a realistic WC given the matchup?
 - Was my lead choice correct? List the 2–3 best lead options against their team and explain why each is better/worse than what I picked.
 - Did I bring the right 4? If not, which of my 2 benched mons should have come instead, and what would have changed?
 - If I missed an "obvious combination" on the opponent's team (Fake Out + setup, redirection + sweeper, weather + abusers, speed control + nuke, etc.), name it.
+
+### 1.5. PHASE 2 TAG AUDIT (only if Phase 2 tags are present for this game)
+Phase 2 tags tell you which habits the player ran for this specific game. Use them to anchor your analysis.
+
+- **Pre-T1 commitment** — if the player wrote a commitment sentence, read it and quality-check it:
+  - Did the WHO match the opponent's actual win condition, or did the player target the flashy threat?
+  - Is the WHY actionable? (Specific enough to imply a T1 move.) Or vague ("because it's strong")?
+  - Did the player play turns 1–3 around that commitment, or did they drift to their default script?
+  - If no commitment was written: name what the commitment *should* have been, given the opp's team.
+- **Threat-type checklist done?** — if checked, did the threat the player addressed at T1 line up with the actual problem on the opp's team? If unchecked: identify the threat axis (immediate damage / setup scaling / position disruption / weather denial / priority denial / endgame wall) that the player likely missed.
+- **Support-mon first-move audit done?** — if checked AND embedded log is present, compare the actual T1 move with what the audit's decision tree would prescribe. If audit-done = true but the move doesn't match the right branch (e.g. Rain Dance into special-Fairy spread when Light Screen was correct), that's the lesson: tag-discipline without skill-translation.
+- **Strategic 1-HP usage** — if checked, does the note describe a real strategic use (Intimidate re-trigger / planned sacrifice / eat-a-hit), or is it rationalization?
+- **Switch reasons triggered** — verify against the embedded log. Did the player actually switch for the categories tagged?
 
 ### 2. TURN-BY-TURN WALKTHROUGH (only if embedded log is present) — COMPLETENESS IS MANDATORY
 
@@ -2221,6 +2246,7 @@ The user will reply "continue" and you produce the remaining blocks (and only th
 - I self-tagged this game with these error types: [list them].
 - Do you agree, partially agree, or disagree?
 - If a type I tagged isn't supported by the log, say so. If a type I missed IS supported, name it (most often: I tagged "Positioning" when the actual root cause was "Planning failure" — no clear WC driving plays).
+- **Cross-reference with Phase 2 tags** if present: was "Threat-type checklist done" unchecked AND the error was a Planning failure? That's not a planning-skill gap — that's a habit-skipped gap. Same logic for support audit and Positioning errors. Make this link explicit if it applies.
 
 ### 5. CORRECTED LINE
 From the actual pivotal turn forward, walk through the corrected sequence in this format:
