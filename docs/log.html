@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My Log — VGC Training</title>
-<link rel="stylesheet" href="style.css?v=10">
-<link rel="stylesheet" href="app.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="app.css?v=11">
 </head>
 <body>
 
@@ -223,7 +223,7 @@
             <label class="compact-check">
               <input type="checkbox" id="gf-p2-threat-checklist">
               <span>Threat-type checklist done pre-Turn 1?</span>
-              <span class="tip-icon" data-tooltip="At team preview, mentally scan the opp's 6 against the 6 threat axes: (1) immediate damage, (2) setup scaling, (3) position disruption, (4) weather denial, (5) priority denial, (6) endgame wall. Check this if you actually ran the scan — not just glanced. Catches the Orthworm Iron Defense / Cloud Nine Drampa types before turn 1.">i</span>
+              <span class="tip-icon" data-tooltip="At team preview, mentally sweep the opp's 6 against the 6 axes: ⚔️ Immediate damage · 📈 Setup scaling · 🌀 Position disruption · ☁️ Weather denial · ⚡ Priority denial · 🛡️ Endgame wall.&#10;&#10;Check this if you actually ran the sweep. Each axis has its own counter-pattern.&#10;&#10;Full reference (what each axis means, how to spot it, why it matters, how to counter) is in the Drills tab — '📋 The 6 threat-type axes' card.">i</span>
             </label>
 
             <label class="compact-check">
@@ -384,6 +384,72 @@ This is a free-form scratchpad — write whatever helps you understand the team.
 
     <div class="hover-hint">💡 Hover the <span class="tip-icon">i</span> icons throughout this page for short explanations of what each thing tracks.</div>
 
+    <details class="phase2-section" id="phase2-threat-axes">
+      <summary>📋 The 6 threat-type axes — reference card</summary>
+      <div class="section-body">
+        <div class="section-intro">
+          <strong>This is the checklist behind the "Threat-type checklist done pre-T1?" tag in the game logger.</strong>
+          At team preview, scan the opponent's 6 against each of the 6 axes below. Most preview-stage losses come from missing ONE of these axes — the Orthworm Body Press trap, the Cloud Nine surprise, the Psychic Terrain Quash-blocker. You don't have to verbalize all 6 every game; just sweep through them so none gets missed.
+        </div>
+
+        <div class="axis-grid">
+
+          <div class="axis-card">
+            <h4>1. ⚔️ Immediate damage</h4>
+            <p><strong>The axis:</strong> Can the opponent KO your support or anchor <em>right now</em> (turn 1–2)?</p>
+            <p><strong>How to spot it:</strong> spread attackers in their leads (Astral Barrage / Dazzling Gleam / Heat Wave types), Choice-locked nukes, super-effective coverage against your defensive mons.</p>
+            <p><strong>Why it matters:</strong> if your support dies T1, every plan downstream fails. Address this <em>first</em> in your scan.</p>
+            <p><strong>Counter pattern:</strong> screens / Wide Guard / Protect the fragile mon / lead defensively if the threat is severe.</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>2. 📈 Setup scaling</h4>
+            <p><strong>The axis:</strong> Does anything on their team become unbeatable if ignored for 2+ turns?</p>
+            <p><strong>How to spot it:</strong> Iron Defense + Body Press, Calm Mind / Dragon Dance / Quiver Dance / Bulk Up users, weather or terrain abusers that snowball.</p>
+            <p><strong>Why it matters:</strong> easy to under-rate at preview because the mon looks passive. By turn 4 it's the actual win condition. This is the trap that cost Game 6 in your last 10.</p>
+            <p><strong>Counter pattern:</strong> pressure setup mons <em>early</em>, even if they look harmless. Two free turns is the deciding gift.</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>3. 🌀 Position disruption</h4>
+            <p><strong>The axis:</strong> Can they break your formation — force switches, redirection-breakers, Ally Switch?</p>
+            <p><strong>How to spot it:</strong> Roar / Whirlwind / Dragon Tail in their pool, Intimidate-cycling, Ally Switch users, taunt + phazing combos.</p>
+            <p><strong>Why it matters:</strong> your team relies on specific pairs staying together (e.g. Sableye + Archaludon as Mode A). Phazing invalidates the pair-mode; you have to re-establish.</p>
+            <p><strong>Counter pattern:</strong> have a defensive structure that survives one phazing turn. Don't put both your win-cons next to each other if they show Roar.</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>4. ☁️ Weather / terrain denial</h4>
+            <p><strong>The axis:</strong> Can they nullify your weather or field condition?</p>
+            <p><strong>How to spot it:</strong> Cloud Nine / Air Lock abilities, opposing weather setters that overwrite yours, terrain setters that block your priority or status.</p>
+            <p><strong>Why it matters:</strong> your Electro Shot tempo depends on rain. A Cloud Nine mon sitting there means your damage axis breaks. This is the Drampa lesson from Game 10.</p>
+            <p><strong>Counter pattern:</strong> bring a backup setter (Pelipper), or plan for unstable weather — don't click moves that <em>require</em> rain.</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>5. ⚡ Priority denial</h4>
+            <p><strong>The axis:</strong> Can they stop your priority-control plays — Quash, Fake Out, Prankster moves?</p>
+            <p><strong>How to spot it:</strong> Psychic Terrain (blocks priority moves on grounded mons), Queenly Majesty / Dazzling / Armor Tail / Mind's Eye abilities, Misty Surge (blocks status priority).</p>
+            <p><strong>Why it matters:</strong> Sableye's Quash + Fake Out is half your speed control. Lose it and the team's tempo axis collapses.</p>
+            <p><strong>Counter pattern:</strong> identify the priority-denier at preview. Remove it before pressing priority-dependent moves.</p>
+          </div>
+
+          <div class="axis-card">
+            <h4>6. 🛡️ Endgame wall</h4>
+            <p><strong>The axis:</strong> Can ONE of their mons solo-beat your remaining team late-game?</p>
+            <p><strong>How to spot it:</strong> bulky walls with recovery (Cresselia / Snorlax archetypes), setup sweepers that snowball past a single check, mons your team has no super-effective answer to.</p>
+            <p><strong>Why it matters:</strong> even if you control turns 1–8, you can't close. The classic "I was winning but couldn't finish" loss.</p>
+            <p><strong>Counter pattern:</strong> plan how Basculegion or Archaludon removes this <em>specific</em> mon before endgame. If you can't, mark the matchup as "play around" — preserve a closer, don't trade evenly.</p>
+          </div>
+
+        </div>
+
+        <div class="section-intro" style="margin-top:16px;">
+          <strong>How it's used at team preview:</strong> in your 90-second window, sweep their 6 against each axis. You'll usually only flag 1–3 axes per game — most opps have one or two specific threats. Once you flag them, your Turn-1 plan must address each. Missing an axis is how Phase 1 losses happened (the Orthworm, the Drampa, the Farigiraf).
+        </div>
+      </div>
+    </details>
+
     <details class="phase2-section" id="phase2-howto">
       <summary>📖 How Phase 2 works — quick reference</summary>
       <div class="section-body">
@@ -530,6 +596,6 @@ This is a free-form scratchpad — write whatever helps you understand the team.
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script src="app.js?v=10"></script>
+<script src="app.js?v=11"></script>
 </body>
 </html>

@@ -1314,6 +1314,45 @@ a.inline-log-btn:hover,
 .phase2-progress-list .value { font-weight: 700; color: var(--fg); white-space: nowrap; }
 .phase2-progress-list .value.done { color: var(--success); }
 
+/* Threat-axes reference card grid (Drills tab) */
+.axis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+.axis-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.axis-card h4 {
+  margin: 0 0 8px;
+  font-size: 1.02em;
+  color: var(--fg);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.axis-card p {
+  margin: 4px 0;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+.axis-card p strong { color: var(--primary); }
+.axis-card:nth-child(1) { border-left-color: var(--primary); }
+.axis-card:nth-child(2) { border-left-color: var(--accent); }
+.axis-card:nth-child(3) { border-left-color: var(--secondary); }
+.axis-card:nth-child(4) { border-left-color: #06b6d4; }      /* weather cyan */
+.axis-card:nth-child(5) { border-left-color: var(--success); }
+.axis-card:nth-child(6) { border-left-color: #9333ea; }      /* endgame purple */
+.axis-card:nth-child(1) p strong { color: var(--primary); }
+.axis-card:nth-child(2) p strong { color: #b45309; }
+.axis-card:nth-child(3) p strong { color: var(--secondary); }
+.axis-card:nth-child(4) p strong { color: #0e7490; }
+.axis-card:nth-child(5) p strong { color: var(--success); }
+.axis-card:nth-child(6) p strong { color: #7e22ce; }
+
 /* Drills tab intro card */
 .drills-intro {
   background: linear-gradient(135deg, var(--bg-soft) 0%, var(--accent-soft) 100%);
